@@ -1,0 +1,6 @@
+
+use admin
+db.createUser({user: "root",pwd: "XXXXXXXX",roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]})
+
+use vie
+db.createUser({user: "vie-root",pwd: "XXXXXXXXX",roles: [ { role: "readWrite", db: "vie" }, { role: "dbAdmin", db: "vie" }]})
