@@ -1,0 +1,13 @@
+---
+id: "vie-dev"
+desc: "vie, under developement"
+
+logging:
+  path: "local/log/"
+
+data:
+  path: "data/papers"
+
+mongo:
+  connection-string: "XXXXXXXXXXX"
+  database: "XXXXXXX"

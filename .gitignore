@@ -1,3 +1,7 @@
+data/
+local/
+conf/01_local_configuration.yaml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
