@@ -4,7 +4,7 @@ from datetime import datetime
 from src.core.v_logger import setup_logger
 from src.back.v_mongo import MongoWrapper
 from src.core.v_nlp import NlpWrapper
-from src.core.xxReferenceQuery import ReferenceQuery
+from src.core.v_reference import ReferenceQuery
 
 def initialize(root_path, conf):
     global MONGO
@@ -15,24 +15,18 @@ def initialize(root_path, conf):
     if not os.path.exists(log_path):
         os.makedirs(log_path)
     setup_logger(log_path, conf["id"])
-
-    DEFAULT_CONNECTION_STRING = 'mongodb://we2:zPhiD8unwJ@localhost/vie'
-    DEFAULT_DATABASE_NAME = "vie"
     MONGO = MongoWrapper(
-        DEFAULT_CONNECTION_STRING, DEFAULT_DATABASE_NAME)
+        conf["mongo"]["connection-string"], conf["mongo"]["database"])
     NLP = NlpWrapper("sm")
-    REF_QUERY = ReferenceQuery()
-
+    REF_QUERY = ReferenceQuery(os.path.join(root_path, conf["data"]["bib-path"]))
 
 def getMongoWrapper():
     global MONGO
     return MONGO
 
-
 def getNlpWrapper():
     global NLP
     return NLP
-
 
 def getReferenceQueryManager():
     global REF_QUERY

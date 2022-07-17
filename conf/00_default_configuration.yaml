@@ -7,7 +7,7 @@ logging:
 
 data:
   path: "data/papers"
-
+  bib-path: "data/references"
 mongo:
   connection-string: "XXXXXXXXXXX"
   database: "XXXXXXX"

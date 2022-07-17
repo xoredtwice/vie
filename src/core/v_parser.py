@@ -14,45 +14,14 @@ from pdfminer.layout import LTTextContainer
 import io
 
 from src.back.v_mongo import Paper
-from src.core.v_logger import info,error
+from src.core.v_logger import info, error
 
 import numpy as np
 import math
 import os
 import collections
-
-
-def pdfParser(file_path, page_no=''):
-    logger = util.xxLogger.getLogger()
-    logger.debug("... Using PDFMiner version: " + pdfminer.__version__)
-    logger.debug("... Start parsing PDF")
-
-    paper = PaperModel(file_path)
-    fp = open(file_path, 'rb')
-    rsrcmgr = PDFResourceManager()
-    retstr = io.StringIO()
-    codec = 'utf-8'
-    laparams = LAParams()
-    device = TextConverter(rsrcmgr, retstr, laparams=laparams)
-    # Create a PDF interpreter object.
-    interpreter = PDFPageInterpreter(rsrcmgr, device)
-
-    # Process each page contained in the document.
-    counter = 0
-    for page in PDFPage.get_pages(fp):
-        if page_no == '' or counter == int(page_no) - 1:
-            interpreter.process_page(page)
-            paper.new_page(retstr.getvalue())
-        counter = counter + 1
-
-    logger.debug("... Done parsing PDF")
-
-    return paper
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
 def getElementData(element):
-    logger = util.xxLogger.getLogger()
     element_dict = {}
     element_dict["page_no"] = element[0]
     element_dict["data"] = element[1]
@@ -63,10 +32,8 @@ def getElementData(element):
         element_dict["text"] = element[1].get_text()
 
     return element_dict
-
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 def compareFontStrings(font1, font2):
-
     if font1 == font2:
         return 0
     else:
@@ -84,15 +51,12 @@ def compareFontStrings(font1, font2):
         else:
             return 1
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
 def pdfParserUsingLayout(file_path):
     # a test code to see how Layout detection works.
-    logger = util.xxLogger.getLogger()
-    logger.debug("... Using PDFMiner version: " + pdfminer.__version__)
-    logger.debug("... Start parsing PDF using Layout")
+    info("... Using PDFMiner version: " + pdfminer.__version__)
+    info("... Start parsing PDF using Layout")
 
-    paper = RawPaper(file_name=os.path.basename(file_path))
+    paper = Paper(file_name=os.path.basename(file_path))
     fp = open(file_path, 'rb')
     rsrcmgr = PDFResourceManager()
     codec = 'utf-8'
@@ -170,7 +134,7 @@ def pdfParserUsingLayout(file_path):
     # print(whole_fonts)
     #paper.fonts = whole_fonts
     paper.main_font = max(whole_fonts, key=whole_fonts.get)
-    logger.debug("main_font = " + paper.main_font)
+    info(f"main_font = {paper.main_font}")
 
     max_font = ""
     for font in whole_fonts:
@@ -180,7 +144,7 @@ def pdfParserUsingLayout(file_path):
             if compareFontStrings(max_font, font) == 1:
                 max_font = font
 
-    logger.debug("max_font = " + max_font)
+    info("max_font = " + max_font)
 
     title = ""
     for line in paper.x_lines:
@@ -188,10 +152,10 @@ def pdfParserUsingLayout(file_path):
             title += line["text"]
 
     paper.title = title
-    logger.debug("paper.title = " + title)
+    info("paper.title = " + title)
     if len(title) < 10 or len(title) > 100:
         paper.warnings.append("[WARNING] title size")
 
-    logger.debug("... Done parsing PDF")
+    info("... Done parsing PDF")
 
     return paper

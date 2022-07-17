@@ -199,12 +199,21 @@ class Paper(mongoengine.Document):
 
     bib = mongoengine.ReferenceField(BibRecord)
 
-
+    current_page = 0
+    
     meta = {'strict': False, 'collection': 'evoteid2022',
             'indexes': [
             {'fields': ['$title', '$bow'],
              'default_language': 'english',
              'weights': {'title': 2, 'bow': 1}}]}
+
+    def newPage(self, x_lines):
+        # creating page_no, element model, size list
+        for x_line in x_lines:
+            x_line["page"] = self.current_page
+            self.x_lines.append(x_line)
+
+        self.current_page = self.current_page + 1
 
     def deleteOpinions(self):
         info("Removing All opinions")

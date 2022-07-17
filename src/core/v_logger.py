@@ -27,8 +27,8 @@ def info(text):
     logger = logging.getLogger("VIE-LOGGER")
     logger.info(text)
 
-def error(ex, show_error_dialog = True):
-    logger = getLogger()
+def error(ex, show_error_dialog = False):
+    logger = logging.getLogger("VIE-LOGGER")
     logger.error(str(ex))
     logger.error(traceback.format_exc())
 
