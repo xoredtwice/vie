@@ -1,6 +1,7 @@
 
+from src.core.v_logger import info, error
+
 def prepare_bows():
-    logger = util.xxLogger.getLogger()
     nlpWrapper = util.xxGlobals.getNlpWrapper()
     results = []
     try:
@@ -12,8 +13,8 @@ def prepare_bows():
             #     paper.raw.bow[:] = [x for x in paper.raw.bow if len(x)>2]
             
             # fixing bi-grams manually from observations
-            nbow = paper.raw.bow
-            paper.raw.bow.clear()
+            nbow = paper.bow
+            paper.bow.clear()
             tp = ""
             for t in paper.raw.bow:
                 if t != "public" and t!= "key":
@@ -22,7 +23,7 @@ def prepare_bows():
                     if tp == "public" and t == "key":
                         paper.raw.bow.append("publickey")
                 tp = t 
-            print(paper.raw.bow)
+            print(paper.bow)
             paper.save()
 
     except Exception as e:

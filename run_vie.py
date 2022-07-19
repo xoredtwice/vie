@@ -9,7 +9,9 @@ from src.core.v_logger import info, error
 from src.core.v_globals import initialize
 from src.core.v_parser import pdfParserUsingLayout
 from src.back.v_mongo import Paper
+
 from src.v_import import import_pdf_files
+from src.v_extract import prepare_bows
 ###############################################################################
 root_path = str(pathlib.Path(__file__).parent.resolve())
 

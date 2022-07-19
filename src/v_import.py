@@ -21,7 +21,7 @@ def import_pdf_files(input_path):
             # paper = nlpWrapper.extractPaperStructure(paper)
             # paper = nlpWrapper.extract_sentences_by_reference(paper)
             # paper.raw = nlpWrapper.extractSections(paper.raw)
-            # paper = nlpWrapper.extractBow(paper)
+            paper = nlpWrapper.extractBow(paper)
 
             paper.save()
 
