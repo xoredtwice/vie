@@ -17,6 +17,9 @@ Voting articles including UC proof
 
 	> "We use the Universally Composable (UC) framework to evaluate our Non-Interactive Zero-Knowledge (NIZK) protocol for verifying the validity of the ballot in an Internet voting scheme. ..."
 
+- [[2014] Brief Announcement: Statement Voting and Liquid Democracy](https://dl.acm.org/doi/10.1145/3087801.3087868)
+
+	> " In this work, we, for the first time, provide a rigorous study of liquid democracy under the Universal Composability (UC) frame- work. ..." ([PDF](https://eprints.lancs.ac.uk/id/eprint/86861/1/liquid.pdf))
 
 - [[2015] New Techniques for Electronic Voting](https://www.usenix.org/conference/jets15/workshop-program/presentation/szepieniec)
 
@@ -33,7 +36,9 @@ Voting articles including UC proof
 
 - [[2018] A rigorous security analysis of a decentralized electronic voting protocol in the universal composability framework](https://www.sciencedirect.com/science/article/abs/pii/S221421261830231X)
 
-- [[2020]E-cclesia: Universally Composable Self-Tallying Elections](https://eprint.iacr.org/2020/513)
+	> "We provide a rigorous proof of security of a decentralized e-voting protocol proposed by Khader et al. in the Universal Composability (UC) Framework."
+
+- [[2020] E-cclesia: Universally Composable Self-Tallying Elections](https://eprint.iacr.org/2020/513)
 	
 	> "In this work, we explore the prospect of decentralized e-voting where security is preserved under concurrent protocol executions. In particular, we provide the first comprehensive formalization of STE in the universal composability (UC) framework introduced by Canetti [FOCS ’01] via an ideal functionality that captures required security properties such as voter privacy, eligibility, fairness, one-voter one-vote, and verifiability ..." ([PDF](https://eprint.iacr.org/2020/513.pdf))
 
@@ -46,4 +51,6 @@ Voting articles including UC proof
 	> "In this work, for the first time, we provide a rigorous security modeling for the Estonian IVXV system as a ceremony, attempting to capture the effect of actual human behavior on election verifiability in the universal composability (UC) framework ..."([PDF](https://arxiv.org/pdf/2109.01994.pdf))
 
 - [[2021] Electronic voting in the classical and quantum settings: modelling, design and analysis](https://era.ed.ac.uk/handle/1842/38344)
+
+	> "In this thesis, we formalize the requirements for secure STE schemes in the Universal Composability (UC) framework. Our model captures the standard voting properties of eligibility, fairness, vote-privacy, and one voterone vote..." ([PDF](https://era.ed.ac.uk/bitstream/handle/1842/38344/Lamprou2021.pdf))
 
