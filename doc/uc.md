@@ -13,6 +13,13 @@ Voting articles including UC proof
 
 	> "We now would like to show that a real voting system securely emulates this ideal functionality. To this purpose, we use the notion of secure emulation, as proposed in the universally composable (UC) security framework [12], or in the reactive simulatability framework [13] for instance." ([PDF](https://drops.dagstuhl.de/opus/volltexte/2008/1297/pdf/07311.deMarneffeOlivier.Paper.1297.pdf))
 
+- [[2009] Universally Composable Incoercibility](https://eprint.iacr.org/2009/520)
+	
+	> "We present the UC/c framework, a general definition for
+secure and incoercible multi-party protocols. Our framework allows
+to model arbitrary reactive protocol tasks (by specifying an ideal
+functionality) and comes with a universal composition theorem. ..." ([PDF](https://link.springer.com/content/pdf/10.1007/978-3-642-14623-7_22.pdf))
+
 - [[2010] Split-ballot voting: Everlasting privacy with distributed trust](https://dl.acm.org/doi/10.1145/1698750.1698756)
 
 	> "We formally prove the security of the protocol in the Universal Composability framework, based on number-theoretic assumptions...." ([PDF](https://www.wisdom.weizmann.ac.il/~naor/PAPERS/split.pdf))
