@@ -1,2 +1,5 @@
 # vie
-Automated SoK on Voting Literature
+Semi-Automated SoK on Voting Literature (Under Developement)
+
+
+

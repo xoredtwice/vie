@@ -13,6 +13,10 @@ Voting articles including UC proof
 
 	> "We now would like to show that a real voting system securely emulates this ideal functionality. To this purpose, we use the notion of secure emulation, as proposed in the universally composable (UC) security framework [12], or in the reactive simulatability framework [13] for instance." ([PDF](https://drops.dagstuhl.de/opus/volltexte/2008/1297/pdf/07311.deMarneffeOlivier.Paper.1297.pdf))
 
+- [[2010] Split-ballot voting: Everlasting privacy with distributed trust](https://dl.acm.org/doi/10.1145/1698750.1698756)
+
+	> "We formally prove the security of the protocol in the Universal Composability framework, based on number-theoretic assumptions...." ([PDF](https://www.wisdom.weizmann.ac.il/~naor/PAPERS/split.pdf))
+
 - [[2010] Universally Composable NIZK Protocol in an Internet Voting Scheme](https://link.springer.com/chapter/10.1007/978-3-642-22444-7_10)
 
 	> "We use the Universally Composable (UC) framework to evaluate our Non-Interactive Zero-Knowledge (NIZK) protocol for verifying the validity of the ballot in an Internet voting scheme. ..."
@@ -37,6 +41,14 @@ Voting articles including UC proof
 - [[2018] A rigorous security analysis of a decentralized electronic voting protocol in the universal composability framework](https://www.sciencedirect.com/science/article/abs/pii/S221421261830231X)
 
 	> "We provide a rigorous proof of security of a decentralized e-voting protocol proposed by Khader et al. in the Universal Composability (UC) Framework."
+
+- [[2018] ZeroVote](https://project-archive.inf.ed.ac.uk/ug4/20181065/ug4_proj.pdf)
+
+	>"The main purpose of the project is to define a decentralized e-voting protocol
+that could be implemented on the blockchain in the universal composition (UC)
+framework and provide a formal proof that it preserves voter privacy. The protocol is based on the ideas in Zerocoin and built in a hybrid model utilizing ideal functionalities for digital signatures, commitment schemes and secure
+accumulators, the last of which is new and with proof of its realizability. As opposed to Zerocoin, the zero-knowledge signature of knowledge is defined in terms
+of other functionalities to obtain a more versatile construction in the CRS model...." ([PDF](https://project-archive.inf.ed.ac.uk/ug4/20181065/ug4_proj.pdf))
 
 - [[2020] E-cclesia: Universally Composable Self-Tallying Elections](https://eprint.iacr.org/2020/513)
 	
