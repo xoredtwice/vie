@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoteXX 2022, Coercion Resistant e-voting systems Evaluation Table</title>
+    <style>
+			.center {
+				margin: auto;
+				width: 60%;
+				border: 3px solid green;
+				padding: 100px;
+			}
+			.styled-table {
+			    border-collapse: collapse;
+			    margin: 25px 0;
+			    font-size: 1.2em;
+			    font-family: sans-serif;
+			    min-width: 400px;
+			    width:  100%;
+			    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			}
+			.styled-table thead tr {
+			    background-color: #009879;
+			    color: #ffffff;
+			    text-align: center;
+			}
+			.styled-table th,
+			.styled-table td {
+			    text-align: center;
+			    padding: 12px 15px;
+			}
+			.styled-table tbody tr {
+			    border-bottom: 1px solid #dddddd;
+			}
+
+			.styled-table tbody tr:nth-of-type(even) {
+			    background-color: #f3f3f3;
+			}
+
+			.styled-table tbody tr:last-of-type {
+			    border-bottom: 2px solid #009879;
+			}
+			.full {
+				height: 25px;
+				width: 25px;
+				background-color: #000;
+				border-color: #000;
+				border-radius: 50%;
+				display: inline-block;
+			}
+			.half {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        height: 25px;
+        width: 15px;
+        border-radius: 0px 40px 40px 0;
+        background-color: black;
+        margin-top: -8px;
+			}
+			.empty {
+				height: 25px;
+				width: 25px;
+				background-color: #bbb;
+				border-radius: 50%;
+				border-color: #000;
+				display: inline-block;
+			}
+
+			.popup {
+			  position: relative;
+			  display: inline-block;
+			  cursor: pointer;
+			  -webkit-user-select: none;
+			  -moz-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+			}
+
+			/* The actual popup */
+			.popup .popuptext {
+			  visibility: hidden;
+			  width: 260px;
+			  background-color: #555;
+			  color: #fff;
+			  text-align: center;
+			  border-radius: 6px;
+			  padding: 8px 0;
+			  position: absolute;
+			  z-index: 1;
+			  bottom: 125%;
+			  left: 50%;
+			  margin-left: -130px;
+			}
+
+			/* Popup arrow */
+			.popup .popuptext::after {
+			  content: "";
+			  position: absolute;
+			  top: 100%;
+			  left: 50%;
+			  margin-left: -5px;
+			  border-width: 5px;
+			  border-style: solid;
+			  border-color: #555 transparent transparent transparent;
+			}
+
+			/* Toggle this class - hide and show the popup */
+			.popup .show {
+			  visibility: visible;
+			  -webkit-animation: fadeIn 1s;
+			  animation: fadeIn 1s;
+			}
+
+			/* Add animation (fade in the popup) */
+			@-webkit-keyframes fadeIn {
+			  from {opacity: 0;} 
+			  to {opacity: 1;}
+			}
+
+			@keyframes fadeIn {
+			  from {opacity: 0;}
+			  to {opacity:1 ;}
+			}
+    </style>
+  </head>
+  <body>
+
+  	<div class = "center">
+		<table class="styled-table">
+		    <thead>
+		        <tr>
+		            <th>Type</th>
+		            <th>Example</th>
+		            <th colspan="3">Assumptions</th>
+		            <th colspan="7">Properties</th>
+		        </tr>
+		    </thead>
+		    <thead>
+		        <tr>
+		            <th></th>
+		            <th></th>
+		            <th><div class="popup" onclick="pop('0001-text')">A1<span class="popuptext" id="0001-text"></span></th>
+		            <th><div class="popup" onclick="pop('0002-text')">A2<span class="popuptext" id="0002-text"></span></th>
+		            <th><div class="popup" onclick="pop('0003-text')">A3<span class="popuptext" id="0003-text"></span></th>
+		            <th><div class="popup" onclick="pop('0004-text')">P1<span class="popuptext" id="0004-text"></span></th>
+		            <th><div class="popup" onclick="pop('0005-text')">P2<span class="popuptext" id="0005-text"></span></th>
+		            <th><div class="popup" onclick="pop('0006-text')">P3<span class="popuptext" id="0006-text"></span></th>
+		            <th><div class="popup" onclick="pop('0007-text')">P4<span class="popuptext" id="0007-text"></span></th>
+		            <th><div class="popup" onclick="pop('0008-text')">P5<span class="popuptext" id="0008-text"></span></th>
+		            <th><div class="popup" onclick="pop('0009-text')">P6<span class="popuptext" id="0009-text"></span></th>
+		            <th><div class="popup" onclick="pop('0010-text')">P7<span class="popuptext" id="0010-text"></span></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td>Baseline(coercible)</td>
+		            <td> <a href="https://vote.heliosvoting.org/">Helios(2008)</a> </td>
+		            <td><div class="popup" onclick="pop('0101-text')"><span id="0101"></span><span class="popuptext" id="0101-text"></span></td>
+		            <td><div class="popup" onclick="pop('0102-text')"><span id="0102"></span><span class="popuptext" id="0102-text"></span></td>
+		            <td><div class="popup" onclick="pop('0103-text')"><span id="0103"></span><span class="popuptext" id="0103-text"></span></td>
+		            <td><div class="popup" onclick="pop('0104-text')"><span id="0104"></span><span class="popuptext" id="0104-text"></span></td>
+		            <td><div class="popup" onclick="pop('0105-text')"><span id="0105"></span><span class="popuptext" id="0105-text"></span></td>
+		            <td><div class="popup" onclick="pop('0106-text')"><span id="0106"></span><span class="popuptext" id="0106-text"></span></td>
+		            <td><div class="popup" onclick="pop('0107-text')"><span id="0107"></span><span class="popuptext" id="0107-text"></span></td>
+		            <td><div class="popup" onclick="pop('0108-text')"><span id="0108"></span><span class="popuptext" id="0108-text"></span></td>
+		            <td><div class="popup" onclick="pop('0109-text')"><span id="0109"></span><span class="popuptext" id="0109-text"></span></td>
+		            <td><div class="popup" onclick="pop('0110-text')"><span id="0110"></span><span class="popuptext" id="0110-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Fake Credentials</td>
+		            <td> <a href="https://eprint.iacr.org/2002/165.pdf">JCJ(2005)</a> </td>
+		            <td><div class="popup" onclick="pop('0201-text')"><span id="0201"></span><span class="popuptext" id="0201-text"></span></td>
+		            <td><div class="popup" onclick="pop('0202-text')"><span id="0202"></span><span class="popuptext" id="0202-text"></span></td>
+		            <td><div class="popup" onclick="pop('0203-text')"><span id="0203"></span><span class="popuptext" id="0203-text"></span></td>
+		            <td><div class="popup" onclick="pop('0204-text')"><span id="0204"></span><span class="popuptext" id="0204-text"></span></td>
+		            <td><div class="popup" onclick="pop('0205-text')"><span id="0205"></span><span class="popuptext" id="0205-text"></span></td>
+		            <td><div class="popup" onclick="pop('0206-text')"><span id="0206"></span><span class="popuptext" id="0206-text"></span></td>
+		            <td><div class="popup" onclick="pop('0207-text')"><span id="0207"></span><span class="popuptext" id="0207-text"></span></td>
+		            <td><div class="popup" onclick="pop('0208-text')"><span id="0208"></span><span class="popuptext" id="0208-text"></span></td>
+		            <td><div class="popup" onclick="pop('0209-text')"><span id="0209"></span><span class="popuptext" id="0209-text"></span></td>
+		            <td><div class="popup" onclick="pop('0210-text')"><span id="0210"></span><span class="popuptext" id="0210-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Masked Ballots</td>
+		            <td> <a href="https://votexx.org/">WeBu09(2009)</a> </td>
+		            <td><div class="popup" onclick="pop('0301-text')"><span id="0301"></span><span class="popuptext" id="0301-text"></span></td>
+		            <td><div class="popup" onclick="pop('0302-text')"><span id="0302"></span><span class="popuptext" id="0302-text"></span></td>
+		            <td><div class="popup" onclick="pop('0303-text')"><span id="0303"></span><span class="popuptext" id="0303-text"></span></td>
+		            <td><div class="popup" onclick="pop('0304-text')"><span id="0304"></span><span class="popuptext" id="0304-text"></span></td>
+		            <td><div class="popup" onclick="pop('0305-text')"><span id="0305"></span><span class="popuptext" id="0305-text"></span></td>
+		            <td><div class="popup" onclick="pop('0306-text')"><span id="0306"></span><span class="popuptext" id="0306-text"></span></td>
+		            <td><div class="popup" onclick="pop('0307-text')"><span id="0307"></span><span class="popuptext" id="0307-text"></span></td>
+		            <td><div class="popup" onclick="pop('0308-text')"><span id="0308"></span><span class="popuptext" id="0308-text"></span></td>
+		            <td><div class="popup" onclick="pop('0309-text')"><span id="0309"></span><span class="popuptext" id="0309-text"></span></td>
+		            <td><div class="popup" onclick="pop('0310-text')"><span id="0310"></span><span class="popuptext" id="0310-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Panic Passwords</td>
+		            <td> <a href="https://users.encs.concordia.ca/~clark/papers/2011_fc.pdf">Selections(2011)</a> </td>
+		            <td><div class="popup" onclick="pop('0401-text')"><span id="0401"></span><span class="popuptext" id="0401-text"></span></td>
+		            <td><div class="popup" onclick="pop('0402-text')"><span id="0402"></span><span class="popuptext" id="0402-text"></span></td>
+		            <td><div class="popup" onclick="pop('0403-text')"><span id="0403"></span><span class="popuptext" id="0403-text"></span></td>
+		            <td><div class="popup" onclick="pop('0404-text')"><span id="0404"></span><span class="popuptext" id="0404-text"></span></td>
+		            <td><div class="popup" onclick="pop('0405-text')"><span id="0405"></span><span class="popuptext" id="0405-text"></span></td>
+		            <td><div class="popup" onclick="pop('0406-text')"><span id="0406"></span><span class="popuptext" id="0406-text"></span></td>
+		            <td><div class="popup" onclick="pop('0407-text')"><span id="0407"></span><span class="popuptext" id="0407-text"></span></td>
+		            <td><div class="popup" onclick="pop('0408-text')"><span id="0408"></span><span class="popuptext" id="0408-text"></span></td>
+		            <td><div class="popup" onclick="pop('0409-text')"><span id="0409"></span><span class="popuptext" id="0409-text"></span></td>
+		            <td><div class="popup" onclick="pop('0410-text')"><span id="0410"></span><span class="popuptext" id="0410-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Decoy Ballots</td>
+		            <td> <a href="https://rsvoting.org/">RS-Voting(2012)</a> </td>
+		            <td><div class="popup" onclick="pop('0501-text')"><span id="0501"></span><span class="popuptext" id="0501-text"></span></td>
+		            <td><div class="popup" onclick="pop('0502-text')"><span id="0502"></span><span class="popuptext" id="0502-text"></span></td>
+		            <td><div class="popup" onclick="pop('0503-text')"><span id="0503"></span><span class="popuptext" id="0503-text"></span></td>
+		            <td><div class="popup" onclick="pop('0504-text')"><span id="0504"></span><span class="popuptext" id="0504-text"></span></td>
+		            <td><div class="popup" onclick="pop('0505-text')"><span id="0505"></span><span class="popuptext" id="0505-text"></span></td>
+		            <td><div class="popup" onclick="pop('0506-text')"><span id="0506"></span><span class="popuptext" id="0506-text"></span></td>
+		            <td><div class="popup" onclick="pop('0507-text')"><span id="0507"></span><span class="popuptext" id="0507-text"></span></td>
+		            <td><div class="popup" onclick="pop('0508-text')"><span id="0508"></span><span class="popuptext" id="0508-text"></span></td>
+		            <td><div class="popup" onclick="pop('0509-text')"><span id="0509"></span><span class="popuptext" id="0509-text"></span></td>
+		            <td><div class="popup" onclick="pop('0510-text')"><span id="0510"></span><span class="popuptext" id="0510-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Secure Hardware</td>
+		            <td> <a href="https://link.springer.com/chapter/10.1007/978-3-662-48000-7_37">AOZZ(2015)</a> </td>
+		            <td><div class="popup" onclick="pop('0601-text')"><span id="0601"></span><span class="popuptext" id="0601-text"></span></td>
+		            <td><div class="popup" onclick="pop('0602-text')"><span id="0602"></span><span class="popuptext" id="0602-text"></span></td>
+		            <td><div class="popup" onclick="pop('0603-text')"><span id="0603"></span><span class="popuptext" id="0603-text"></span></td>
+		            <td><div class="popup" onclick="pop('0604-text')"><span id="0604"></span><span class="popuptext" id="0604-text"></span></td>
+		            <td><div class="popup" onclick="pop('0605-text')"><span id="0605"></span><span class="popuptext" id="0605-text"></span></td>
+		            <td><div class="popup" onclick="pop('0606-text')"><span id="0606"></span><span class="popuptext" id="0606-text"></span></td>
+		            <td><div class="popup" onclick="pop('0607-text')"><span id="0607"></span><span class="popuptext" id="0607-text"></span></td>
+		            <td><div class="popup" onclick="pop('0608-text')"><span id="0608"></span><span class="popuptext" id="0608-text"></span></td>
+		            <td><div class="popup" onclick="pop('0609-text')"><span id="0609"></span><span class="popuptext" id="0609-text"></span></td>
+		            <td><div class="popup" onclick="pop('0610-text')"><span id="0610"></span><span class="popuptext" id="0610-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Re-voting(E2E)</td>
+		            <td> <a href="https://www.usenix.org/conference/usenixsecurity20/presentation/lueks">VoteAgain(2020)</a> </td>
+		            <td><div class="popup" onclick="pop('0701-text')"><span id="0701"></span><span class="popuptext" id="0701-text"></span></td>
+		            <td><div class="popup" onclick="pop('0702-text')"><span id="0702"></span><span class="popuptext" id="0702-text"></span></td>
+		            <td><div class="popup" onclick="pop('0703-text')"><span id="0703"></span><span class="popuptext" id="0703-text"></span></td>
+		            <td><div class="popup" onclick="pop('0704-text')"><span id="0704"></span><span class="popuptext" id="0704-text"></span></td>
+		            <td><div class="popup" onclick="pop('0705-text')"><span id="0705"></span><span class="popuptext" id="0705-text"></span></td>
+		            <td><div class="popup" onclick="pop('0706-text')"><span id="0706"></span><span class="popuptext" id="0706-text"></span></td>
+		            <td><div class="popup" onclick="pop('0707-text')"><span id="0707"></span><span class="popuptext" id="0707-text"></span></td>
+		            <td><div class="popup" onclick="pop('0708-text')"><span id="0708"></span><span class="popuptext" id="0708-text"></span></td>
+		            <td><div class="popup" onclick="pop('0709-text')"><span id="0709"></span><span class="popuptext" id="0709-text"></span></td>
+		            <td><div class="popup" onclick="pop('0710-text')"><span id="0710"></span><span class="popuptext" id="0710-text"></span></td>
+		        </tr>
+		        <tr>
+		            <td>Hedgehogs</td>
+		            <td> <a href="https://votexx.org/">VoteXX(2022)</a> </td>
+		            <td><div class="popup" onclick="pop('0801-text')"><span id="0801"></span><span class="popuptext" id="0801-text"></span></td>
+		            <td><div class="popup" onclick="pop('0802-text')"><span id="0802"></span><span class="popuptext" id="0802-text"></span></td>
+		            <td><div class="popup" onclick="pop('0803-text')"><span id="0803"></span><span class="popuptext" id="0803-text"></span></td>
+		            <td><div class="popup" onclick="pop('0804-text')"><span id="0804"></span><span class="popuptext" id="0804-text"></span></td>
+		            <td><div class="popup" onclick="pop('0805-text')"><span id="0805"></span><span class="popuptext" id="0805-text"></span></td>
+		            <td><div class="popup" onclick="pop('0806-text')"><span id="0806"></span><span class="popuptext" id="0806-text"></span></td>
+		            <td><div class="popup" onclick="pop('0807-text')"><span id="0807"></span><span class="popuptext" id="0807-text"></span></td>
+		            <td><div class="popup" onclick="pop('0808-text')"><span id="0808"></span><span class="popuptext" id="0808-text"></span></td>
+		            <td><div class="popup" onclick="pop('0809-text')"><span id="0809"></span><span class="popuptext" id="0809-text"></span></td>
+		            <td><div class="popup" onclick="pop('0810-text')"><span id="0810"></span><span class="popuptext" id="0810-text"></span></td>
+		        </tr>
+		        <!-- and so on... -->
+		    </tbody>
+		</table>  		
+
+
+		<script>
+
+				// Questions
+				document.getElementById('0001-text').innerHTML = "No untappable registration"; 
+				document.getElementById('0002-text').innerHTML = "Tolerates dishonest EA"; 
+				document.getElementById('0003-text').innerHTML = "No special device required"; 
+				document.getElementById('0004-text').innerHTML = "Low cognitive burden"; 
+				document.getElementById('0005-text').innerHTML = "Tolerates coercion at any time"; 
+				document.getElementById('0006-text').innerHTML = "Can fully override coercion"; 
+				document.getElementById('0007-text').innerHTML = "Inexpensive"; 
+				document.getElementById('0008-text').innerHTML = "Tolerates Coercer learning secrets"; 
+				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
+				document.getElementById('0010-text').innerHTML = "Has UC proof"; 
+
+				// ----------------------------------------
+				// 01.Helios
+				// ----------------------------------------
+
+				// Helios: No untappable registration?
+				fillCell("0101", "full", "Registration happens through email.");
+
+				// Helios: Tolerates dishonest EA?
+				fillCell("0102", "empty", "It does not use Threshold scheme.");
+
+				// Helios: No special device required?
+				fillCell("0103", "empty", "");
+
+				// Helios: Low cognitive burden?
+				fillCell("0104", "empty", "");
+
+				// Helios: Tolerates coercion at any time?
+				fillCell("0105", "empty", "");
+
+				// Helios: Can fully override coercion?
+				fillCell("0106", "empty", "");
+
+				// Helios: Inexpensive?
+				fillCell("0107", "full", "");
+
+				// Helios: Tolerates Coercer learning secrets?
+				fillCell("0108", "empty", "");
+
+				// Helios: Most ballots are real?
+				fillCell("0109", "full", "");
+
+				// Helios: Has UC proof?
+				fillCell("0110", "empty", "");
+
+
+				// ----------------------------------------
+				// 02.JCJ
+				// ----------------------------------------
+
+				// JCJ: No untappable registration?
+				fillCell("0201", "full", "");
+
+				// JCJ: Tolerates dishonest EA?
+				fillCell("0202", "half", "");
+
+				// JCJ: No special device required?
+				fillCell("0203", "empty", "");
+
+				// JCJ: Low cognitive burden?
+				fillCell("0204", "full", "");
+
+				// JCJ: Tolerates coercion at any time?
+				fillCell("0205", "empty", "");
+
+				// JCJ: Can fully override coercion?
+				fillCell("0206", "full", "");
+
+				// JCJ: Inexpensive?
+				fillCell("0207", "full", "");
+
+				// JCJ: Tolerates Coercer learning secrets?
+				fillCell("0208", "empty", "");
+
+				// JCJ: Most ballots are real?
+				fillCell("0209", "full", "");
+
+				// JCJ: Has UC proof?
+				fillCell("0210", "half", "");
+
+				// ----------------------------------------
+				// 03.WeBu09
+				// ----------------------------------------
+
+				// WeBu09: No untappable registration?
+				fillCell("0301", "empty", "");
+
+				// WeBu09: Tolerates dishonest EA?
+				fillCell("0302", "full", "");
+
+				// WeBu09: No special device required?
+				fillCell("0303", "full", "");
+
+				// WeBu09: Low cognitive burden?
+				fillCell("0304", "empty", "");
+
+				// WeBu09: Tolerates coercion at any time?
+				fillCell("0305", "empty", "");
+
+				// WeBu09: Can fully override coercion?
+				fillCell("0306", "half", "");
+
+				// WeBu09: Inexpensive?
+				fillCell("0307", "full", "");
+
+				// WeBu09: Tolerates Coercer learning secrets?
+				fillCell("0308", "empty", "");
+
+				// WeBu09: Most ballots are real?
+				fillCell("0309", "full", "");
+
+				// WeBu09: Has UC proof?
+				fillCell("0310", "full", "");
+				
+				// ----------------------------------------
+				// 04.Selections
+				// ----------------------------------------
+
+				// Selections: No untappable registration?
+				fillCell("0401", "empty", "");
+
+				// Selections: Tolerates dishonest EA?
+				fillCell("0402", "full", "");
+
+				// Selections: No special device required?
+				fillCell("0403", "full", "");
+
+				// Selections: Low cognitive burden?
+				fillCell("0404", "half", "");
+
+				// Selections: Tolerates coercion at any time?
+				fillCell("0405", "full", "");
+
+				// Selections: Can fully override coercion?
+				fillCell("0406", "full", "");
+
+				// Selections: Inexpensive?
+				fillCell("0407", "full", "");
+
+				// Selections: Tolerates Coercer learning secrets?
+				fillCell("0408", "empty", "");
+
+				// Selections: Most ballots are real?
+				fillCell("0409", "full", "");
+
+				// Selections: Has UC proof?
+				fillCell("0410", "half", "");
+
+				// ----------------------------------------
+				// 05.RS-Voting
+				// ----------------------------------------
+
+				// RS-Voting: No untappable registration?
+				fillCell("0501", "full", "");
+
+				// RS-Voting: Tolerates dishonest EA?
+				fillCell("0502", "half", "");
+
+				// RS-Voting: No special device required?
+				fillCell("0503", "half", "");
+
+				// RS-Voting: Low cognitive burden?
+				fillCell("0504", "half", "");
+
+				// RS-Voting: Tolerates coercion at any time?
+				fillCell("0505", "half", "");
+
+				// RS-Voting: Can fully override coercion?
+				fillCell("0506", "empty", "");
+
+				// RS-Voting: Inexpensive?
+				fillCell("0507", "full", "");
+
+				// RS-Voting: Tolerates Coercer learning secrets?
+				fillCell("0508", "half", "");
+
+				// RS-Voting: Most ballots are real?
+				fillCell("0509", "empty", "");
+
+				// RS-Voting: Has UC proof?
+				fillCell("0510", "full", "");
+
+				// ----------------------------------------
+				// 06.AOZZ
+				// ----------------------------------------
+
+				// AOZZ: No untappable registration?
+				fillCell("0601", "full", "");
+
+				// AOZZ: Tolerates dishonest EA?
+				fillCell("0602", "half", "");
+
+				// AOZZ: No special device required?
+				fillCell("0603", "empty", "");
+
+				// AOZZ: Low cognitive burden?
+				fillCell("0604", "full", "");
+
+				// AOZZ: Tolerates coercion at any time?
+				fillCell("0605", "full", "");
+
+				// AOZZ: Can fully override coercion?
+				fillCell("0606", "full", "");
+
+				// AOZZ: Inexpensive?
+				fillCell("0607", "empty", "");
+
+				// AOZZ: Tolerates Coercer learning secrets?
+				fillCell("0608", "empty", "");
+
+				// AOZZ: Most ballots are real?
+				fillCell("0609", "full", "");
+
+				// AOZZ: Has UC proof?
+				fillCell("0610", "full", "");
+
+				// ----------------------------------------
+				// 07.VoteAgain
+				// ----------------------------------------
+
+				// VoteAgain: No untappable registration?
+				fillCell("0701", "full", "");
+
+				// VoteAgain: Tolerates dishonest EA?
+				fillCell("0702", "full", "");
+
+				// VoteAgain: No special device required?
+				fillCell("0703", "full", "");
+
+				// VoteAgain: Low cognitive burden?
+				fillCell("0704", "empty", "");
+
+				// VoteAgain: Tolerates coercion at any time?
+				fillCell("0705", "full", "");
+
+				// VoteAgain: Can fully override coercion?
+				fillCell("0706", "full", "");
+
+				// VoteAgain: Inexpensive?
+				fillCell("0707", "full", "");
+
+				// VoteAgain: Tolerates Coercer learning secrets?
+				fillCell("0708", "empty", "");
+
+				// VoteAgain: Most ballots are real?
+				fillCell("0709", "full", "");
+
+				// VoteAgain: Has UC proof?
+				fillCell("0710", "half", "");
+
+				// ----------------------------------------
+				// 08.VoteXX
+				// ----------------------------------------
+				// VoteXX: No untappable registration?
+				fillCell("0801", "full", "Registration through in person ceremony.");
+
+				// VoteXX: Tolerates dishonest EA?
+				fillCell("0802", "full", "Uses Threshold Crypto-scheme");
+
+				// VoteXX: No special device required?
+				fillCell("0803", "full", "Uses smart phones and personal computers");
+
+				// VoteXX: Low cognitive burden?
+				fillCell("0804", "full", "Keys are saved on the device.");
+
+				// VoteXX: Tolerates coercion at any time?
+				fillCell("0805", "half", "Unless the complete coercion.");
+
+				// VoteXX: Can fully override coercion?
+				fillCell("0806", "full", "Anything done by the coercer can get flipped.");
+
+				// VoteXX: Inexpensive?
+				fillCell("0807", "full", "Using precomputation, the system performs in linear time.");
+
+				// VoteXX: Tolerates Coercer learning secrets?
+				fillCell("0808", "full", "Coercer knowing all secrets has not better chance than coin flip.");
+
+				// VoteXX: Most ballots are real?
+				fillCell("0809", "full", "Ballots are all real.");
+
+				// VoteXX: Has UC proof?
+				fillCell("0810", "full", "");
+				
+				function fillCell(id, value, text){
+						document.getElementById(id).className = value;
+						document.getElementById(id + '-text').innerHTML = text; 
+
+				}
+
+				// When the user clicks on div, open the popup
+				function pop(id) {
+				  var popup = document.getElementById(id);
+				  popup.classList.toggle("show");
+				}
+		</script>
+  </body>
+</html>
