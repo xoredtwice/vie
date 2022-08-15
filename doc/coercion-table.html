@@ -50,15 +50,7 @@
 				border-radius: 50%;
 				display: inline-block;
 			}
-.circle {
-  margin:20px;
-  border-radius:50%;
-  width:25px;
-  height:25px;
-  background:
-      radial-gradient(circle at center,white 60%,transparent 60.5%),
-      linear-gradient(to right,red 50%,green 0);
-}
+
 			.half {
         position: absolute;
         transform: translate(-50%, -50%);
@@ -276,6 +268,10 @@
 		            <td><div class="popup" onmouseover="toAnswer('0810-text')"><span id="0810"></span><span class="popuptext" id="0810-text"></span></td>
 		        </tr>
 		    	<thead>
+		        <tr>
+		            <td colspan="4" height="50px">Question</td>
+		            <td colspan="8">Answer</td>
+		        </tr>
 		        <tr>
 		            <td colspan="4" id="board" height="100px"></td>
 		            <td colspan="8" id="answer"></td>
@@ -583,6 +579,7 @@
 				  popup.classList.toggle("show");
 
 				  document.getElementById("board").innerHTML = popup.innerHTML;
+				  document.getElementById("answer").innerHTML = "";
 				}
 
 				
@@ -591,8 +588,8 @@
 				  let qid = "00" + id.substring(2);
 				  let pid = id.substring(0, 2) + "00";
 
-				  document.getElementById("answer").innerHTML = popup.innerHTML;
-				  document.getElementById("board").innerHTML = document.getElementById(pid).innerHTML + ": " +document.getElementById(qid).innerHTML + "?";
+				  document.getElementById("answer").innerHTML = "<b>" + popup.innerHTML + "</b>";
+				  document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + ": " +document.getElementById(qid).innerHTML + "?</b>";
 				  // pop(qid);
 				}
 		</script>
