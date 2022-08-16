@@ -274,7 +274,7 @@
 		        </tr>
 		        <tr>
 		            <td colspan="4" id="board" height="100px"></td>
-		            <td colspan="8" id="answer"></td>
+		            <td colspan="8" id="answer" width="60%"></td>
 		        </tr>
 		      </thead>
 		    </tbody>
@@ -309,7 +309,7 @@
 				fillCell("0103", "empty", "Helios uses personal computers and browsers");
 
 				// Helios: Low cognitive burden?
-				fillCell("0104", "empty", "Helios: generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time.");
+				fillCell("0104", "empty", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
 
 				// Helios: Tolerates coercion at any time?
 				fillCell("0105", "empty", "Helios has not been designed to tolerate coercion at all.");
@@ -318,7 +318,7 @@
 				fillCell("0106", "empty", "N/A");
 
 				// Helios: Inexpensive?
-				fillCell("0107", "full", "Helios: It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process.");
+				fillCell("0107", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
 
 				// Helios: Tolerates Coercer learning secrets?
 				fillCell("0108", "empty", "N/A");
@@ -335,10 +335,10 @@
 				// ----------------------------------------
 
 				// JCJ: No untappable registration?
-				fillCell("0201", "full", "");
+				fillCell("0201", "full", '"The function register(SKR, i, k1) → (ski, pki) takes as input the private registrar key SKR, a (voter) identifier i and a security parameter k1, and outputs a key pair (ski, pki). This is computed jointly by players in R, possibly in interaction with voter Vi."');
 
 				// JCJ: Tolerates dishonest EA?
-				fillCell("0202", "half", "");
+				fillCell("0202", "half", '"We assume that the majority of players in R are honest, and can thus ensure that the R provides Vi with acorrect credential. Nonetheless, it is possible for R to furnish Vi with a proof that Si is a ciphertext on σi. To enforce coercion-resistance in the case where erasure of secrets by voters is not automatic, a designated verifier proof [28] must be employed for this proof. We note that credentials may be used for multiple elections."');
 
 				// JCJ: No special device required?
 				fillCell("0203", "empty", "");
