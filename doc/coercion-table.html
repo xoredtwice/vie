@@ -134,8 +134,8 @@
 		        <tr>
 		            <th>Type</th>
 		            <th>Example</th>
-		            <th colspan="3">Assumptions</th>
-		            <th colspan="7">Properties</th>
+		            <th colspan="5">Assumptions</th>
+		            <th colspan="5">Properties</th>
 		        </tr>
 		    </thead>
 		    <thead>
@@ -145,13 +145,13 @@
 		            <th><div class="popup" onmouseover="pop('0001-text')" onmouseout="pop('0001-text')">A1<span class="popuptext" id="0001-text"></span></th>
 		            <th><div class="popup" onmouseover="pop('0002-text')" onmouseout="pop('0002-text')">A2<span class="popuptext" id="0002-text"></span></th>
 		            <th><div class="popup" onmouseover="pop('0003-text')" onmouseout="pop('0003-text')">A3<span class="popuptext" id="0003-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0004-text')" onmouseout="pop('0004-text')">P1<span class="popuptext" id="0004-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0005-text')" onmouseout="pop('0005-text')">P2<span class="popuptext" id="0005-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0006-text')" onmouseout="pop('0006-text')">P3<span class="popuptext" id="0006-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0007-text')" onmouseout="pop('0007-text')">P4<span class="popuptext" id="0007-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0008-text')" onmouseout="pop('0008-text')">P5<span class="popuptext" id="0008-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0009-text')" onmouseout="pop('0009-text')">P6<span class="popuptext" id="0009-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0010-text')" onmouseout="pop('0010-text')">P7<span class="popuptext" id="0010-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0004-text')" onmouseout="pop('0004-text')">A4<span class="popuptext" id="0004-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0005-text')" onmouseout="pop('0005-text')">A5<span class="popuptext" id="0005-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0006-text')" onmouseout="pop('0006-text')">P1<span class="popuptext" id="0006-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0007-text')" onmouseout="pop('0007-text')">P2<span class="popuptext" id="0007-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0008-text')" onmouseout="pop('0008-text')">P3<span class="popuptext" id="0008-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0009-text')" onmouseout="pop('0009-text')">P4<span class="popuptext" id="0009-text"></span></th>
+		            <th><div class="popup" onmouseover="pop('0010-text')" onmouseout="pop('0010-text')">P5<span class="popuptext" id="0010-text"></span></th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -274,7 +274,7 @@
 		        </tr>
 		        <tr>
 		            <td colspan="4" id="board" height="100px"></td>
-		            <td colspan="8" id="answer" width="60%"></td>
+		            <td colspan="8" id="answer" width="50%"></td>
 		        </tr>
 		      </thead>
 		    </tbody>
@@ -284,44 +284,46 @@
 		<script>
 
 				// Questions
-				document.getElementById('0001-text').innerHTML = "No untappable registration"; 
-				document.getElementById('0002-text').innerHTML = "Tolerates dishonest EA"; 
-				document.getElementById('0003-text').innerHTML = "No special device required"; 
-				document.getElementById('0004-text').innerHTML = "Low cognitive burden"; 
-				document.getElementById('0005-text').innerHTML = "Tolerates coercion at any time"; 
-				document.getElementById('0006-text').innerHTML = "Can fully override coercion"; 
-				document.getElementById('0007-text').innerHTML = "Inexpensive"; 
-				document.getElementById('0008-text').innerHTML = "Tolerates Coercer learning secrets"; 
+				document.getElementById('0001-text').innerHTML = "tolerates coercion when no untappable registration"; 
+				document.getElementById('0002-text').innerHTML = "tolerates coercion when EA colludes with coercer"; 
+				document.getElementById('0003-text').innerHTML = "tolerates coercion when Coercer can corrupt any device"; 
+				document.getElementById('0004-text').innerHTML = "tolerates coercion when Coercer can act at any time"; 
+				document.getElementById('0005-text').innerHTML = "tolerates coercion when Tolerates Coercer learning every secrets"; 
+				document.getElementById('0006-text').innerHTML = "Low cognitive burden"; 
+				document.getElementById('0007-text').innerHTML = "Can fully override coercion"; 
+				document.getElementById('0008-text').innerHTML = "Inexpensive"; 
 				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
-				document.getElementById('0010-text').innerHTML = "Has UC proof"; 
+				document.getElementById('0010-text').innerHTML = "Has Security proof"; // full for UC half for game-based
 
+				// 0011: "No special device is not available" -> implicit in expensive column
+				
 				// ----------------------------------------
 				// 01.Helios
 				// ----------------------------------------
 
-				// Helios: No untappable registration?
+				// Helios: "System tolerates coercion when: no untappable registration"
 				fillCell("0101", "full", "Registration happens through email.");
 
-				// Helios: Tolerates dishonest EA? 
-				fillCell("0102", "empty", "Helios does not use multi-party computation.");
+				// Helios: "System tolerates coercion when: EA colludes with coercer"
+				fillCell("0102", "empty", "Helios does not use threshold .");
 
-				// Helios: No special device required? TODO:: full needed
-				fillCell("0103", "empty", "Helios uses personal computers and browsers");
+				// Helios: No special device required? "System tolerates coercion when: Coercer can corrupt any device"
+				fillCell("0103", "empty", "Helios uses personal computers and browsers.");
 
-				// Helios: Low cognitive burden?
-				fillCell("0104", "empty", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
+				// Helios: System tolerates coercion when: Coercer can corrupt any device?
+				fillCell("0104", "empty", "N/A");
 
-				// Helios: Tolerates coercion at any time?
+				// Helios: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0105", "empty", "Helios has not been designed to tolerate coercion at all.");
 
+				// Helios: Low cognitive burden?
+				fillCell("0106", "full", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
+
 				// Helios: Can fully override coercion?
-				fillCell("0106", "empty", "N/A");
+				fillCell("0107", "empty", "N/A");
 
 				// Helios: Inexpensive?
-				fillCell("0107", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
-
-				// Helios: Tolerates Coercer learning secrets?
-				fillCell("0108", "empty", "N/A");
+				fillCell("0108", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
 
 				// Helios: Most ballots are real?
 				fillCell("0109", "full", "All ballots are real.");
@@ -334,237 +336,240 @@
 				// 02.JCJ
 				// ----------------------------------------
 
-				// JCJ: No untappable registration?
+				// JCJ: System tolerates coercion when: no untappable registration?
 				fillCell("0201", "full", '"The function register(SKR, i, k1) → (ski, pki) takes as input the private registrar key SKR, a (voter) identifier i and a security parameter k1, and outputs a key pair (ski, pki). This is computed jointly by players in R, possibly in interaction with voter Vi."');
 
-				// JCJ: Tolerates dishonest EA?
+				// JCJ: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0202", "half", '"We assume that the majority of players in R are honest, and can thus ensure that the R provides Vi with acorrect credential. Nonetheless, it is possible for R to furnish Vi with a proof that Si is a ciphertext on σi. To enforce coercion-resistance in the case where erasure of secrets by voters is not automatic, a designated verifier proof [28] must be employed for this proof. We note that credentials may be used for multiple elections."');
 
-				// JCJ: No special device required?
+				// JCJ: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0203", "empty", "");
 
-				// JCJ: Low cognitive burden?
-				fillCell("0204", "full", "");
-
 				// JCJ: Tolerates coercion at any time?
-				fillCell("0205", "empty", "");
-
-				// JCJ: Can fully override coercion?
-				fillCell("0206", "full", "");
-
-				// JCJ: Inexpensive?
-				fillCell("0207", "full", "");
+				fillCell("0204", "empty", '"We make the assumption that the registration phase proceeds without any corruption of voters. This assumption is at some level a requirement for a coercion-free election, as an attacker capable of corrupting and seizing the credentials of a voter in this initial phase can mount a simulation attack."');
 
 				// JCJ: Tolerates Coercer learning secrets?
-				fillCell("0208", "empty", "");
+				fillCell("0205", "empty", "");
+
+				// JCJ: Low cognitive burden?
+				fillCell("0206", "full", "");
+
+				// JCJ: Can fully override coercion?
+				fillCell("0207", "full", "");
+
+				// JCJ: Inexpensive?
+				fillCell("0208", "full", "");
 
 				// JCJ: Most ballots are real?
 				fillCell("0209", "full", "");
 
 				// JCJ: Has UC proof?
-				fillCell("0210", "half", "");
+				fillCell("0210", "half", '"Recall that our definition of coercion-freeness revolves around a game played between an adversary A and a voter targeted for coercion."');
 
 				// ----------------------------------------
 				// 03.WeBu09
 				// ----------------------------------------
 
-				// WeBu09: No untappable registration?
+				// WeBu09: System tolerates coercion when: no untappable registration?
 				fillCell("0301", "empty", "");
 
-				// WeBu09: Tolerates dishonest EA?
+				// WeBu09: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0302", "full", "");
 
-				// WeBu09: No special device required?
+				// WeBu09: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0303", "full", "");
 
-				// WeBu09: Low cognitive burden?
+				// WeBu09: System tolerates coercion when: Coercer can act at any time?
 				fillCell("0304", "empty", "");
 
-				// WeBu09: Tolerates coercion at any time?
+				// WeBu09: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0305", "empty", "");
 
+				// WeBu09: Low cognitive burden?
+				fillCell("0306", "empty", "");
+
 				// WeBu09: Can fully override coercion?
-				fillCell("0306", "half", "");
+				fillCell("0307", "half", "");
 
 				// WeBu09: Inexpensive?
-				fillCell("0307", "full", "");
-
-				// WeBu09: Tolerates Coercer learning secrets?
-				fillCell("0308", "empty", "");
+				fillCell("0308", "full", "");
 
 				// WeBu09: Most ballots are real?
 				fillCell("0309", "full", "");
 
-				// WeBu09: Has UC proof?
+				// WeBu09: Has Security proof?
 				fillCell("0310", "full", "");
 				
 				// ----------------------------------------
 				// 04.Selections
 				// ----------------------------------------
 
-				// Selections: No untappable registration?
-				fillCell("0401", "empty", "");
+				// Selections: System tolerates coercion when: no untappable registration?
+				fillCell("0401", "empty", "An adversary that tap the registration can learn all the passwords.");
 
-				// Selections: Tolerates dishonest EA?
-				fillCell("0402", "full", "");
+				// Selections: System tolerates coercion when: EA colludes with coercer?
+				fillCell("0402", "half", "A threhsold of EA can decrypt user's real password.");
 
-				// Selections: No special device required?
-				fillCell("0403", "full", "");
+				// Selections: System tolerates coercion when: Coercer can corrupt any device?
+				fillCell("0403", "full", "No trusted hardware is required.");
+
+				// Selections: System tolerates coercion when: Coercer can act at any time?
+				fillCell("0404", "half", "Coercer can act anytime outside the registration.");
+
+				// Selections: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				fillCell("0405", "empty", "An adversary that tap the registration can learn all the passwords.");
 
 				// Selections: Low cognitive burden?
-				fillCell("0404", "half", "");
-
-				// Selections: Tolerates coercion at any time?
-				fillCell("0405", "full", "");
+				fillCell("0406", "half", "User needs to generate a panic password and deceive the coercer.");
 
 				// Selections: Can fully override coercion?
-				fillCell("0406", "full", "");
+				fillCell("0407", "full", "Only the real votes get counted.");
 
 				// Selections: Inexpensive?
-				fillCell("0407", "full", "");
+				fillCell("0408", "full", "No special hardware or paper.");
 
-				// Selections: Tolerates Coercer learning secrets?
-				fillCell("0408", "empty", "");
-
-				// Selections: Most ballots are real?
+				// Selections: Most ballots are real? 
+				// this column is to punish decoy. already captured in expensive and by special symbol. (centered dot)
 				fillCell("0409", "full", "");
 
-				// Selections: Has UC proof?
-				fillCell("0410", "half", "");
+				// Selections: Has Security proof?
+				fillCell("0410", "half", "Game-based proof.");
 
 				// ----------------------------------------
 				// 05.RS-Voting
 				// ----------------------------------------
 
-				// RS-Voting: No untappable registration?
 				fillCell("0501", "full", "");
 
-				// RS-Voting: Tolerates dishonest EA?
+				// RS-Voting: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0502", "half", "");
 
-				// RS-Voting: No special device required?
+				// RS-Voting: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0503", "half", "");
 
-				// RS-Voting: Low cognitive burden?
+				// RS-Voting: System tolerates coercion when: Coercer can act at any time?
 				fillCell("0504", "half", "");
 
-				// RS-Voting: Tolerates coercion at any time?
+				// RS-Voting: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0505", "half", "");
 
+				// RS-Voting: Low cognitive burden?
+				fillCell("0506", "half", "");
+
 				// RS-Voting: Can fully override coercion?
-				fillCell("0506", "empty", "");
+				fillCell("0507", "empty", "");
 
 				// RS-Voting: Inexpensive?
-				fillCell("0507", "full", "");
-
-				// RS-Voting: Tolerates Coercer learning secrets?
-				fillCell("0508", "half", "");
+				fillCell("0508", "full", "");
 
 				// RS-Voting: Most ballots are real?
 				fillCell("0509", "empty", "");
 
-				// RS-Voting: Has UC proof?
+				// RS-Voting: Has Security proof?
 				fillCell("0510", "full", "");
 
 				// ----------------------------------------
 				// 06.AOZZ
 				// ----------------------------------------
 
-				// AOZZ: No untappable registration?
+				// RS-Voting: System tolerates coercion when: no untappable registration?
+
+				// AOZZ: System tolerates coercion when: no untappable registration?
 				fillCell("0601", "full", "");
 
-				// AOZZ: Tolerates dishonest EA?
+				// AOZZ: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0602", "half", "");
 
-				// AOZZ: No special device required?
+				// AOZZ: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0603", "empty", "");
-
-				// AOZZ: Low cognitive burden?
+				
+				// AOZZ: System tolerates coercion when: Coercer can act at any time?
 				fillCell("0604", "full", "");
 
-				// AOZZ: Tolerates coercion at any time?
-				fillCell("0605", "full", "");
+				// AOZZ: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				fillCell("0605", "empty", "");
 
-				// AOZZ: Can fully override coercion?
+				// AOZZ: Low cognitive burden?
 				fillCell("0606", "full", "");
 
-				// AOZZ: Inexpensive?
-				fillCell("0607", "empty", "");
+				// AOZZ: Can fully override coercion?
+				fillCell("0607", "full", "");
 
-				// AOZZ: Tolerates Coercer learning secrets?
+				// AOZZ: Inexpensive?
 				fillCell("0608", "empty", "");
 
 				// AOZZ: Most ballots are real?
 				fillCell("0609", "full", "");
 
-				// AOZZ: Has UC proof?
+				// AOZZ: Has Security proof?
 				fillCell("0610", "full", "");
 
 				// ----------------------------------------
 				// 07.VoteAgain
 				// ----------------------------------------
 
-				// VoteAgain: No untappable registration?
+				// VoteAgain: System tolerates coercion when: no untappable registration?
 				fillCell("0701", "full", "");
 
-				// VoteAgain: Tolerates dishonest EA?
+				// VoteAgain: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0702", "full", "");
 
-				// VoteAgain: No special device required?
+				// VoteAgain: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0703", "full", "");
 
-				// VoteAgain: Low cognitive burden?
+				// VoteAgain: System tolerates coercion when: Coercer can act at any time?
 				fillCell("0704", "empty", "");
 
-				// VoteAgain: Tolerates coercion at any time?
-				fillCell("0705", "full", "");
+				// VoteAgain: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				fillCell("0705", "empty", "");
+
+				// VoteAgain: Low cognitive burden?
+				fillCell("0706", "empty", "");
 
 				// VoteAgain: Can fully override coercion?
-				fillCell("0706", "full", "");
-
-				// VoteAgain: Inexpensive?
 				fillCell("0707", "full", "");
 
-				// VoteAgain: Tolerates Coercer learning secrets?
-				fillCell("0708", "empty", "");
+				// VoteAgain: Inexpensive?
+				fillCell("0708", "full", '"This mechanism ensures tallying takes quasilinear time, making VOTEAGAIN the first revoting scheme that can handle elections with millions of voters."');
 
 				// VoteAgain: Most ballots are real?
-				fillCell("0709", "full", "");
+				fillCell("0709", "half", '"... one can hide the number of ballots per user by inserting a deterministic number of dummy ballots which depends solely on the number of voters and the number of cast ballots. Thus, it reveals nothing about the number of ballots cast by individual voters, hiding any (re)voting patterns induced by voters or coercers"');
 
-				// VoteAgain: Has UC proof?
-				fillCell("0710", "half", "");
+				// VoteAgain: Has Security proof?
+				fillCell("0710", "half", '"We propose a new game-based coercion resistance definition inspired by Bernhard et al.’s ballot privacy definition. The game tracks two bulletin boards, BB0 and BB1, of which only one is accessible to the adversary (depending on the bit b). We ensure that regardless of the bit b, the same number of ballots are added to the bulletin board."');
 
 				// ----------------------------------------
 				// 08.VoteXX
 				// ----------------------------------------
-				// VoteXX: No untappable registration?
+
+				// VoteXX: System tolerates coercion when: no untappable registration?
 				fillCell("0801", "full", "Registration through in person ceremony.");
 
-				// VoteXX: Tolerates dishonest EA?
+				// VoteXX: System tolerates coercion when: EA colludes with coercer?
 				fillCell("0802", "full", "Uses Threshold Crypto-scheme");
 
-				// VoteXX: No special device required?
+				// VoteXX: System tolerates coercion when: Coercer can corrupt any device?
 				fillCell("0803", "full", "Uses smart phones and personal computers");
 
-				// VoteXX: Low cognitive burden?
-				fillCell("0804", "full", "Keys are saved on the device.");
+				// VoteXX: System tolerates coercion when: Coercer can act at any time?
+				fillCell("0804", "half", "Unless the complete coercion.");
 
-				// VoteXX: Tolerates coercion at any time?
-				fillCell("0805", "half", "Unless the complete coercion.");
+				// VoteXX: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				fillCell("0805", "full", "Coercer knowing all secrets has not better chance than coin flip.");
+
+				// VoteXX: Low cognitive burden?
+				fillCell("0806", "full", "Keys are saved on the device.");
 
 				// VoteXX: Can fully override coercion?
-				fillCell("0806", "full", "Anything done by the coercer can get flipped.");
+				fillCell("0807", "full", "Anything done by the coercer can get flipped.");
 
 				// VoteXX: Inexpensive?
-				fillCell("0807", "full", "Using precomputation, the system performs in linear time.");
-
-				// VoteXX: Tolerates Coercer learning secrets?
-				fillCell("0808", "full", "Coercer knowing all secrets has not better chance than coin flip.");
+				fillCell("0808", "full", "Using precomputation, the system performs in linear time.");
 
 				// VoteXX: Most ballots are real?
 				fillCell("0809", "full", "Ballots are all real.");
 
-				// VoteXX: Has UC proof?
+				// VoteXX: Has Security proof?
 				fillCell("0810", "full", "");
 				
 				function fillCell(id, value, text){
@@ -589,7 +594,7 @@
 				  let pid = id.substring(0, 2) + "00";
 
 				  document.getElementById("answer").innerHTML = "<b>" + popup.innerHTML + "</b>";
-				  document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + ": " +document.getElementById(qid).innerHTML + "?</b>";
+				  document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + " " +document.getElementById(qid).innerHTML + "?</b>";
 				  // pop(qid);
 				}
 		</script>
