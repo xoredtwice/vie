@@ -295,6 +295,17 @@
 				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
 				document.getElementById('0010-text').innerHTML = "Has Security proof"; // full for UC half for game-based
 
+				document.getElementById('0001-text').innerHTML = "tolerates coercion when no untappable registration is available."; 
+				document.getElementById('0002-text').innerHTML = "tolerates coercion when EA colludes with coercer"; 
+				document.getElementById('0003-text').innerHTML = "tolerates coercion when Coercer can corrupt any device"; 
+				document.getElementById('0004-text').innerHTML = "tolerates coercion when Coercer can act at any time"; 
+				document.getElementById('0005-text').innerHTML = "tolerates coercion when Tolerates Coercer learning every secrets"; 
+				document.getElementById('0006-text').innerHTML = "Low cognitive burden"; 
+				document.getElementById('0007-text').innerHTML = "Can fully override coercion"; 
+				document.getElementById('0008-text').innerHTML = "Inexpensive"; 
+				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
+				document.getElementById('0010-text').innerHTML = "Has Security proof"; 
+
 				// 0011: "No special device is not available" -> implicit in expensive column
 				
 				// ----------------------------------------
@@ -439,25 +450,26 @@
 				// 05.RS-Voting
 				// ----------------------------------------
 
-				fillCell("0501", "full", "");
+				// RS-Voting: System tolerates coercion when: no untappable registration is available?
+				fillCell("0501", "full", "Decoys can be sent to randomly selected voters that they already have registered.");
 
 				// RS-Voting: System tolerates coercion when: EA colludes with coercer?
-				fillCell("0502", "half", "");
+				fillCell("0502", "empty", "EA can distinguish the decoy and real ballot.");
 
 				// RS-Voting: System tolerates coercion when: Coercer can corrupt any device?
-				fillCell("0503", "half", "");
+				fillCell("0503", "full", "There is no device to corrupt in 7th estate implementation.");
 
 				// RS-Voting: System tolerates coercion when: Coercer can act at any time?
-				fillCell("0504", "half", "");
+				fillCell("0504", "full", "Only through colluding with the EA that has been captured in A2.");
 
 				// RS-Voting: System tolerates coercion when: Tolerates Coercer learning every secrets?
-				fillCell("0505", "half", "");
+				fillCell("0505", "full", "Decoy Voter has no actual useful secrets.");
 
 				// RS-Voting: Low cognitive burden?
-				fillCell("0506", "half", "");
+				fillCell("0506", "full", "Decoy voter only has to remove the sticker on her decoy ballot.");
 
-				// RS-Voting: Can fully override coercion?
-				fillCell("0507", "empty", "");
+				// RS-Voting: Can fully override coercion? (ask Jeremy, important)
+				fillCell("0507", "half", "Not in the current implementation but possible.");
 
 				// RS-Voting: Inexpensive?
 				fillCell("0508", "full", "");
@@ -466,7 +478,7 @@
 				fillCell("0509", "empty", "");
 
 				// RS-Voting: Has Security proof?
-				fillCell("0510", "full", "");
+				fillCell("0510", "empty", "");
 
 				// ----------------------------------------
 				// 06.AOZZ
