@@ -1,6 +1,7 @@
 data/
 local/
 conf/01_local_configuration.yaml
+test/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -2,13 +2,12 @@
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QPushButton, QLineEdit, QLabel, QComboBox
 from PyQt5.QtWidgets import QListWidget, QVBoxLayout, QFileDialog
 
-import util.xxGlobals
+from src.core.v_globals import getNlpWrapper,getMongoWrapper
 
-import util.xxUtils
-import util.xxLogger
+from src.core.v_logger import info, error
 
-from model.xxMongoModels import Paper, BibRecord, Opinion
-from controller.xxParser import pdfParserUsingLayout
+from src.back.v_mongo import Paper, BibRecord, Opinion
+from src.core.v_parser import pdfParserUsingLayout
 from mongoengine.queryset.visitor import Q
 
 class ControlPanelLayout(QVBoxLayout):
@@ -53,7 +52,7 @@ class ControlPanelLayout(QVBoxLayout):
         # Layout setup
         layout.addWidget(self.random_button)
         layout.addWidget(self.import_button)
-        layout.addStretch(0.5)
+        layout.addStretch(1)
         layout.addWidget(self.query_textbox)
         layout.addWidget(self.query_button)
         layout.addWidget(self.query_list)
@@ -103,8 +102,7 @@ class ControlPanelLayout(QVBoxLayout):
             util.xxLogger.logException(e, True)
 
     def onClicked_import(self):
-        logger = util.xxLogger.getLogger()
-        nlpWrapper = util.xxGlobals.getNlpWrapper()
+        nlpWrapper = getNlpWrapper()
 
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -122,27 +120,25 @@ class ControlPanelLayout(QVBoxLayout):
                     break
 
             if vote_found:
-                logger.info("voting paper: " + fileName)
+                info("voting paper: " + fileName)
                 paper = Paper()
-                paper.raw = raw_paper
+                paper.x_lines = raw_paper.x_lines
                 paper.save()
                 self.parent.update(paper)
             else:
-                logger.info("non-voting paper: " + fileName)
+                info("non-voting paper: " + fileName)
 
     def onClicked_random(self):
-        logger = util.xxLogger.getLogger()
-        logger.info("Querying a random paper")
-        random_paper = util.xxGlobals.getMongoWrapper().getRandomPaper()
+        info("Querying a random paper")
+        random_paper = getMongoWrapper().getRandomPaper()
         if str(random_paper.id) not in self.query_papers.keys():
             self.query_papers_list.append(random_paper)
-            self.query_list.addItem(str(random_paper.raw.file_name))
+            self.query_list.addItem(str(random_paper.file_name))
             self.query_papers[str(random_paper.id)] = random_paper
             self.query_list.setCurrentRow(self.query_list.count() - 1)
             self.onClicked_queryItem()
 
     def onClicked_queryItem(self):
-        logger = util.xxLogger.getLogger()
         current_paper_index = self.query_list.currentRow()
-        logger.info("Loading new paper")
+        info("Loading new paper")
         self.parent.update(self.query_papers_list[current_paper_index])

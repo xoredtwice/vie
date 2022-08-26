@@ -201,7 +201,7 @@ class Paper(mongoengine.Document):
 
     current_page = 0
     
-    meta = {'strict': False, 'collection': 'evoteid2022',
+    meta = {'strict': False, 'collection': 'cool2022',
             'indexes': [
             {'fields': ['$title', '$bow'],
              'default_language': 'english',
@@ -225,12 +225,6 @@ class Paper(mongoengine.Document):
 
     def getViewDict(self):
         vd = {}
-        if "bib_approved" in vd["flags"]:
-            vd["title"] = self.bib.title
-            vd["year"] = self.bib.year
-        else:
-            vd["title"] = self.title
-            vd["year"] = self.year            
 
         vd["id"] = str(self.id)
         vd["file_name"] = self.file_name
@@ -239,6 +233,12 @@ class Paper(mongoengine.Document):
         vd["references"] = self.references
         vd["mentions"] = self.mentions
         vd["flags"] = self.flags
+        if "bib_approved" in vd["flags"]:
+            vd["title"] = self.bib.title
+            vd["year"] = self.bib.year
+        else:
+            vd["title"] = self.title
+            vd["year"] = self.year            
 
         vd["references"] = []
         vd["citations"] = []

@@ -5,12 +5,11 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 import matplotlib.pyplot as plt
 import numpy as np
 
-import util.xxGlobals
+from src.core.v_globals import getNlpWrapper
 
-from model.xxMongoModels import RawPaper, Paper
+from src.back.v_mongo import Paper
 
-import util.xxUtils
-import util.xxLogger
+from src.core.v_logger import info, error
 
 
 # main window
@@ -66,8 +65,7 @@ class GraphLayout(QVBoxLayout):
             self.parent.update(update_only_graph=True)
 
     def update(self, paper_view_dict):
-        logger = util.xxLogger.getLogger()
-        nlpWrapper = util.xxGlobals.getNlpWrapper()
+        nlpWrapper = getNlpWrapper()
 
         def cart2pol(x, y):
             rho = np.sqrt(x**2 + y**2)

@@ -2,14 +2,12 @@
 from PyQt5.QtWidgets import QApplication, QListWidget, QPushButton, QLineEdit, QLabel, QComboBox
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QInputDialog, QStyle
 
-import util.xxGlobals
+from src.core.v_logger import info, error
+from src.core.v_globals import getNlpWrapper
 
-import util.xxUtils
-import util.xxLogger
+from src.view.xxBibEditLayout import BibEditLayout
 
-from view.xxBibEditLayout import BibEditLayout
-
-from model.xxMongoModels import BibRecord, Paper, Opinion
+from src.back.v_mongo import BibRecord, Paper, Opinion
 from functools import partial
 
 class OpinionEditLayout(QHBoxLayout):
@@ -85,7 +83,6 @@ class OpinionEditLayout(QHBoxLayout):
         return layout
 
     def updateModels(self, opinion=None, query_string=""):
-        logger = util.xxLogger.getLogger()
         # first time, making new null useless models
         if opinion is None and query_string is "":
             if self.active_opinion is None:
@@ -107,8 +104,8 @@ class OpinionEditLayout(QHBoxLayout):
                             adj_paper = Paper.objects(
                                 id=opinion.about_paper_id).first()
                         else:
-                            logger.info("Searching for opinion about_paper by bib candidate")
-                            logger.info(opinion.candidate_bib)
+                            info("Searching for opinion about_paper by bib candidate")
+                            info(opinion.candidate_bib)
                             if "title" in opinion.candidate_bib.keys():
                                 candidate_title = opinion.candidate_bib[
                                     "title"].strip()
@@ -124,8 +121,8 @@ class OpinionEditLayout(QHBoxLayout):
                             adj_paper = Paper.objects(
                                 id=opinion.in_paper_id).first()
                         else:
-                            logger.info("Searching for opinion about_paper by bib candidate")
-                            logger.info(opinion.candidate_bib)
+                            info("Searching for opinion about_paper by bib candidate")
+                            info(opinion.candidate_bib)
                             if "title" in opinion.candidate_bib.keys():
                                 candidate_title = opinion.candidate_bib[
                                     "title"].strip()
@@ -137,16 +134,16 @@ class OpinionEditLayout(QHBoxLayout):
                                     self.active_opinion.save()
                 # found the paper that must be shown
                 if adj_paper is not None:
-                    logger.info("adjacent paper found")
+                    info("adjacent paper found")
                     self.active_paper = adj_paper
                     if self.active_paper.bib is None:
-                        logger.info("adjacent paper bib is none")
+                        info("adjacent paper bib is none")
                         self.active_paper.bib = BibRecord()
                         query_string = opinion.reference_string
                 else:
                     self.active_paper = Paper()
                     self.active_paper.bib = BibRecord()
-                    nlpWrapper = util.xxGlobals.getNlpWrapper()
+                    nlpWrapper = getNlpWrapper()
                     ref_dict = nlpWrapper.referenceStringToBibtex(opinion.reference_string)
                     if ref_dict is None:
                         query_string = opinion.reference_string
@@ -164,12 +161,12 @@ class OpinionEditLayout(QHBoxLayout):
             # Generating new opinion and paper if needed
             else:
                 if self.active_paper is None:
-                    logger.info("opinion's active paper is none")
+                    info("opinion's active paper is none")
                     self.active_paper = Paper()
                     self.active_paper.bib = BibRecord()
 
                 if self.active_opinion is None:
-                    logger.info("active opinion is none")
+                    info("active opinion is none")
                     self.active_opinion = Opinion()
                     self.direction = "in"
                     self.active_opinion.about_paper_id = self.active_paper.id
@@ -190,22 +187,20 @@ class OpinionEditLayout(QHBoxLayout):
 
 
     def onClicked_opinions_add_button(self, text):
-        logger = util.xxLogger.getLogger()
         return_text, ok = QInputDialog.getMultiLineText(
             self.parent, "Import citation string",
             "citations")
         if ok:
-            logger.info(
+            info(
                 "importing citations from string: " + return_text)
             for line in return_text.split("\n\n"):
                 self.active_opinion.texts.append(line)
             self.active_opinion.save()
-            logger.info("opinion updated")
+            info("opinion updated")
             self.update()
 
     def onClicked_opiApprove_button(self):
         try:
-            logger = util.xxLogger.getLogger()
 
             if self.direction is "in":
                 self.active_opinion.about_paper_id = self.active_paper.id
@@ -217,16 +212,15 @@ class OpinionEditLayout(QHBoxLayout):
 
             self.active_opinion.save()
             self.active_paper.save()
-            logger.info("Approving opinion")
+            info("Approving opinion")
             self.parent.update()
         except Exception as e:
-            util.xxLogger.logException(e, True)
+            error(e, True)
 
     def onClicked_opiRefresh_button(self):
         self.update(self.parent.active_paper.raw.title)
 
     def onClicked_opinionListItem(self):
-        logger = util.xxLogger.getLogger()
         current_paper_index = self.opinions_list.currentRow()
         # self.parent.update(self.query_papers[current_paper_index])
         # logger.info("Loading new paper")

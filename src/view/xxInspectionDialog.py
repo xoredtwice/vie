@@ -3,18 +3,16 @@ from PyQt5.QtWidgets import QDialog, QPushButton, QLineEdit
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-import util.xxGlobals
+from src.back.v_mongo import Paper, BibRecord, Opinion
 
-from model.xxMongoModels import Paper, BibRecord, Opinion
+from src.utils.v_utils import findFilesByExtention
+from src.core.v_logger import info, error
 
-import util.xxUtils
-import util.xxLogger
-
-from view.xxGraphLayout import GraphLayout
-from view.xxPaperEditLayout import PaperEditLayout
-from view.xxBibEditLayout import BibEditLayout
-from view.xxOpinionEditLayout import OpinionEditLayout
-from view.xxControlPanelLayout import ControlPanelLayout
+from src.view.xxGraphLayout import GraphLayout
+from src.view.xxPaperEditLayout import PaperEditLayout
+from src.view.xxBibEditLayout import BibEditLayout
+from src.view.xxOpinionEditLayout import OpinionEditLayout
+from src.view.xxControlPanelLayout import ControlPanelLayout
 
 import random
 
@@ -25,7 +23,7 @@ class InspectionDialog(QDialog):
     # constructor
     def __init__(self, parent=None):
         super(InspectionDialog, self).__init__(parent)
-        png_files = util.xxUtils.findFilesByExtention(
+        png_files = findFilesByExtention(
             "~/Pictures/Wallpapers/", "png")
 
         self.setWindowIcon(QIcon(random.choice(png_files)))
@@ -72,8 +70,7 @@ class InspectionDialog(QDialog):
         self.setLayout(main_layout)
 
     def update(self, new_paper=None, update_only_graph=False):
-        logger = util.xxLogger.getLogger()
-        logger.info("Updating view from main paper....")
+        info("Updating view from main paper....")
         if new_paper is not None:
             self.active_paper = new_paper
             # TODO:: Temporary, remove it
@@ -81,7 +78,7 @@ class InspectionDialog(QDialog):
         viewDict = self.active_paper.getViewDict()
         if not update_only_graph:
             self.paper_edit_view.update(viewDict)
-            if "bib_approved" in self.active_paper.raw.flags:
+            if "bib_approved" in self.active_paper.flags:
                 self.bib_edit_view.update(
                     self.active_paper.getViewDict()["title"],
                     self.active_paper.bib)

@@ -12,6 +12,7 @@ from src.back.v_mongo import Paper
 
 from src.v_import import import_pdf_files
 from src.v_extract import prepare_bows
+from src.view.xxInspectionDialog import InspectionDialog
 ###############################################################################
 root_path = str(pathlib.Path(__file__).parent.resolve())
 

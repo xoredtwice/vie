@@ -2,13 +2,10 @@
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QPushButton, QLineEdit, QLabel, QComboBox
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QInputDialog, QWidget
 
-import util.xxGlobals
+from src.back.v_mongo import Paper, BibRecord
 
-import util.xxUtils
-import util.xxLogger
+from src.core.v_globals import getReferenceQueryManager
 
-import model.xxMongoModels
-from model.xxMongoModels import Paper
 class BibEditLayout(QVBoxLayout):
 
     # constructor
@@ -24,7 +21,7 @@ class BibEditLayout(QVBoxLayout):
         if bib_model is not None:
             self.active_bib = bib_model
         else:
-            self.active_bib = model.xxMongoModels.BibRecord()
+            self.active_bib = BibRecord()
 
         edit_layout = self.setupBibEditLayout()
         self.addLayout(edit_layout)
@@ -119,8 +116,6 @@ class BibEditLayout(QVBoxLayout):
 
     def onClicked_bibApprove_button(self):
         try:
-            logger = util.xxLogger.getLogger()
-
             self.active_bib.query_string = self.query_label.text()
             self.active_bib.article_type = self.edit_boxes[
                 "article_type"].text()
@@ -142,11 +137,10 @@ class BibEditLayout(QVBoxLayout):
             logger.info("Paper updated!!")
             self.parent.update()
         except Exception as e:
-            util.xxLogger.logException(e, True)
+            error(e, True)
 
     def onClicked_bibImport_button(self):
         try:
-            logger = util.xxLogger.getLogger()
 
             window_pointer = self.parent
             while not isinstance(window_pointer, QWidget):
@@ -157,7 +151,7 @@ class BibEditLayout(QVBoxLayout):
             if ok:
                 logger.info("importing bib from string: " + return_text)
                 try:
-                    ref_manager = util.xxGlobals.getReferenceQueryManager()
+                    ref_manager = getReferenceQueryManager()
                     bibtex_entry = ref_manager.bibtexEntryFromString(return_text)
                     new_bib = ref_manager.bibtexResultToBibModel(
                         {"difference": 0.0, "result": bibtex_entry,
@@ -174,21 +168,20 @@ class BibEditLayout(QVBoxLayout):
                     pass
 
         except Exception as e:
-            util.xxLogger.logException(e, True)
+            error(e, True)
 
     def onClicked_bibRefresh_button(self):
         self.update()
 
     def onClicked_bibQuery_button(self):
         try:
-            logger = util.xxLogger.getLogger()
-            self.active_bib = util.xxGlobals.getReferenceQueryManager().query(
+            self.active_bib = getReferenceQueryManager().query(
                 self.query_label.text())
             ref_paper = Paper.objects(bib=self.active_bib).first()
             if ref_paper is not None:
-                logger.info("bibQuery found existing paper in database")
+                info("bibQuery found existing paper in database")
                 self.parent.active_paper = ref_paper
                 self.update(self.query_label.text(), ref_paper.bib)
                 self.parent.update()
         except Exception as e:
-            util.xxLogger.logException(e, True)
+            error(e, True)

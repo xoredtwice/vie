@@ -4,12 +4,11 @@ from PyQt5.QtWidgets import QLineEdit, QLabel, QComboBox, QStyle, QSizePolicy
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QApplication
 
 from functools import partial
+from src.core.v_globals import getNlpWrapper
 
-import util.xxGlobals
-import util.xxUtils
-import util.xxLogger
+from src.core.v_logger import info, error
 
-from model.xxMongoModels import Opinion
+from src.back.v_mongo import Opinion
 
 from shutil import copyfile
 import os
@@ -163,29 +162,32 @@ class PaperEditLayout(QVBoxLayout):
         if viewDict is None:
             viewDict = self.parent.active_paper.getViewDict()
 
+        print(viewDict)
         for key in viewDict:
+            try:
+                if isinstance(viewDict[key], str):
+                    self.edit_boxes[key].setText(viewDict[key])
 
-            if isinstance(viewDict[key], str):
-                self.edit_boxes[key].setText(viewDict[key])
+                elif isinstance(viewDict[key], list):
+                    if key in ["references", "citations"]:
+                        self.comboBoxes[key].clear()
+                        for opinion in viewDict[key]:
+                            op_string = "[" + opinion.reference_id + "]" + opinion.reference_string
+                            self.comboBoxes[key].addItem(op_string)
+                        self.comboBoxes[key].addItem("")
+                    elif key == "sections":
+                        self.comboBoxes[key].clear()
+                        for item in viewDict[key]:
+                            self.comboBoxes[key].addItem(item["text"])
+                        self.comboBoxes[key].addItem("")
 
-            elif isinstance(viewDict[key], list):
-                if key in ["references", "citations"]:
-                    self.comboBoxes[key].clear()
-                    for opinion in viewDict[key]:
-                        op_string = "[" + opinion.reference_id + "]" + opinion.reference_string
-                        self.comboBoxes[key].addItem(op_string)
-                    self.comboBoxes[key].addItem("")
-                elif key == "sections":
-                    self.comboBoxes[key].clear()
-                    for item in viewDict[key]:
-                        self.comboBoxes[key].addItem(item["text"])
-                    self.comboBoxes[key].addItem("")
-
-                elif key == "flags":
-                    self.comboBoxes[key].clear()
-                    for item in viewDict[key]:
-                        self.comboBoxes[key].addItem(item)
-                    self.comboBoxes[key].addItem("")
+                    elif key == "flags":
+                        self.comboBoxes[key].clear()
+                        for item in viewDict[key]:
+                            self.comboBoxes[key].addItem(item)
+                        self.comboBoxes[key].addItem("")
+            except Exception as e:
+                error(e)
 
     def showEditOrUpdateDialog(self, text, label_text):
         # Adding new flag
@@ -232,8 +234,7 @@ class PaperEditLayout(QVBoxLayout):
 
     def onClicked_combo_reextract_button(self, text):
         try:
-            logger = util.xxLogger.getLogger()
-            nlpWrapper = util.xxGlobals.getNlpWrapper()
+            nlpWrapper = getNlpWrapper()
 
             if text in ["references", "citations"]:
                 return_text, ok = QInputDialog.getMultiLineText(
@@ -246,7 +247,7 @@ class PaperEditLayout(QVBoxLayout):
                         ref = nlpWrapper.extractReferenceEntryManually(line)
                         self.addNewOpinionFromRawReference(ref, text)
         except Exception as e:
-            util.xxLogger.logException(e, show_error_dialog=True)
+            error(e, show_error_dialog=True)
 
     def onClicked_paperApprove_button(self):
         try:
