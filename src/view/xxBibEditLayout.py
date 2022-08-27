@@ -6,6 +6,8 @@ from src.back.v_mongo import Paper, BibRecord
 
 from src.core.v_globals import getReferenceQueryManager
 
+from src.core.v_logger import info, error
+
 class BibEditLayout(QVBoxLayout):
 
     # constructor
@@ -127,14 +129,13 @@ class BibEditLayout(QVBoxLayout):
             self.active_bib.url = self.edit_boxes["url"].text()
 
             self.active_bib.save()
-            logger.info("bib record updated: " + self.active_bib.title)
-            if self.parent.active_paper.raw is None:
-                self.parent.active_paper.raw = model.xxMongoModels.RawPaper()
-            if "bib_approved" not in self.parent.active_paper.raw.flags:
-                self.parent.active_paper.raw.flags.append("bib_approved")
+            info("bib record updated: " + self.active_bib.title)
+
+            if "bib_approved" not in self.parent.active_paper.flags:
+                self.parent.active_paper.flags.append("bib_approved")
             self.parent.active_paper.bib = self.active_bib
             self.parent.active_paper.save()
-            logger.info("Paper updated!!")
+            info("Paper updated!!")
             self.parent.update()
         except Exception as e:
             error(e, True)
@@ -149,7 +150,7 @@ class BibEditLayout(QVBoxLayout):
                 window_pointer, "Import BibRecord from string ",
                 "Bibtex String")
             if ok:
-                logger.info("importing bib from string: " + return_text)
+                info("importing bib from string: " + return_text)
                 try:
                     ref_manager = getReferenceQueryManager()
                     bibtex_entry = ref_manager.bibtexEntryFromString(return_text)
@@ -158,7 +159,7 @@ class BibEditLayout(QVBoxLayout):
                          "source": "MANUAL"})
                     self.update(self.query_label.text(), new_bib)
                 except Exception as e:
-                    logger.info("Trying to parse based on id")
+                    info("Trying to parse based on id")
                     ref_paper = Paper.objects().get(id=return_text)
                     if ref_paper is not None:
                         self.parent.active_paper = ref_paper

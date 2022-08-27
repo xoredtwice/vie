@@ -51,7 +51,7 @@ def compareFontStrings(font1, font2):
         else:
             return 1
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-def pdfParserUsingLayout(file_path):
+def pdfParserUsingLayout(paper, file_path):
     # a test code to see how Layout detection works.
     info("... Using PDFMiner version: " + pdfminer.__version__)
     info("... Start parsing PDF using Layout")

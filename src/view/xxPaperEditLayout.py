@@ -9,6 +9,7 @@ from src.core.v_globals import getNlpWrapper
 from src.core.v_logger import info, error
 
 from src.back.v_mongo import Opinion
+from src.utils.v_utils import openPdfFile, findFile
 
 from shutil import copyfile
 import os
@@ -54,6 +55,7 @@ class PaperEditLayout(QVBoxLayout):
     def setupPaperEditLayout(self):
         viewDict = self.parent.active_paper.getViewDict()
         layout = QVBoxLayout()
+        print(viewDict)
         for key in viewDict:
             newLabel = QLabel()
             newLabel.setText(key)
@@ -61,17 +63,10 @@ class PaperEditLayout(QVBoxLayout):
             layout.addWidget(newLabel)
             self.edit_labels.append(newLabel)
 
-            if isinstance(viewDict[key], str):
+            # if isinstance(viewDict[key], str):
 
-                newTextBox = QLineEdit()
-                newTextBox.setFixedWidth(300)
-                newTextBox.setFixedHeight(30)
-                newTextBox.setText(viewDict[key])
 
-                self.edit_boxes[key] = newTextBox
-
-                layout.addWidget(newTextBox)
-            elif isinstance(viewDict[key], list) \
+            if isinstance(viewDict[key], list) \
                     or isinstance(viewDict[key], dict):
                 new_combo = QComboBox()
                 new_combo.setFixedWidth(300)
@@ -128,6 +123,15 @@ class PaperEditLayout(QVBoxLayout):
                     hbox.addStretch(1)
                     hbox.addWidget(reject_button)
                     layout.addLayout(hbox)
+            else:
+                newTextBox = QLineEdit()
+                newTextBox.setFixedWidth(300)
+                newTextBox.setFixedHeight(30)
+                newTextBox.setText(viewDict[key])
+
+                self.edit_boxes[key] = newTextBox
+
+                layout.addWidget(newTextBox)
         layout.addStretch(1)
         return layout
 
@@ -139,7 +143,6 @@ class PaperEditLayout(QVBoxLayout):
                 self.update()
 
     def addNewOpinionFromRawReference(self, ref, group="references"):
-        logger = util.xxLogger.getLogger()
         if self.parent.active_paper is not None:
 
             new_opinion = Opinion()
@@ -150,11 +153,11 @@ class PaperEditLayout(QVBoxLayout):
             new_opinion.reference_id = ref["tag"]
             new_opinion.reference_string = ref["text"]
             new_opinion.candidate_bib = ref["candidate_bib"]
-            logger.info("addEditPaperOpinion: new_opinion.save()")
+            info("addEditPaperOpinion: new_opinion.save()")
             new_opinion.save()
 
             self.parent.active_paper.save()
-            logger.info("addEditPaperOpinion: paper.save()")
+            info("addEditPaperOpinion: paper.save()")
             self.update()
 
     def update(self, viewDict=None):
@@ -253,45 +256,44 @@ class PaperEditLayout(QVBoxLayout):
         try:
             viewDict = self.parent.active_paper.getViewDict()
             if "bib_approved" not in viewDict["flags"]:
-                self.parent.active_paper.raw.title = self.edit_boxes[
+                self.parent.active_paper.title = self.edit_boxes[
                     "title"].text()
-                self.parent.active_paper.raw.year = self.edit_boxes[
+                self.parent.active_paper.year = self.edit_boxes[
                     "year"].text()
                 self.parent.active_paper.save()
                 self.parent.update()
 
         except Exception as e:
-            util.xxLogger.logException(e, show_error_dialog=True)
+            error(e, show_error_dialog=True)
 
     def onClicked_paperRefresh_button(self):
         self.update()
 
     def onClicked_openPdfButton(self):
         try:
-            logger = util.xxLogger.getLogger()
-            filename = self.parent.active_paper.raw.file_name
-            repo_path = "../exp/jeremy-easy"
-            file_path = util.xxUtils.findFile(
-                self.parent.active_paper.raw.file_name, repo_path)
+            filename = self.parent.active_paper.file_name
+            repo_path = "data/firstgen"
+            file_path = findFile(
+                self.parent.active_paper.file_name, repo_path)
             if file_path is None:
-                logger.info("File not found... opening import dialog")
+                info("File not found... opening import dialog")
                 options = QFileDialog.Options()
                 options |= QFileDialog.DontUseNativeDialog
                 file_path, _ = QFileDialog.getOpenFileName(
                     self.parent, "QFileDialog.getOpenFileName()",
                     "", "All Files (*);;Pdf Files (*.pdf)", options=options)
                 if file_path:
-                    logger.info("Copying file to repo folder")
-                    logger.info(file_path)
+                    info("Copying file to repo folder")
+                    info(file_path)
                     filename = os.path.basename(file_path)
                     dst = repo_path + "/" + filename
                     copyfile(file_path, dst)
-                    self.parent.active_paper.raw.file_name = filename
+                    self.parent.active_paper.file_name = filename
                     self.parent.active_paper.save()
-                    logger.info("New file name saved to paper")
+                    info("New file name saved to paper")
                     self.parent.update()
             else:
-                logger.info("Openning file: " + file_path)
-                util.xxUtils.openPdfFile(file_path)
+                info("Openning file: " + file_path)
+                openPdfFile(file_path)
         except Exception as e:
-            util.xxLogger.logException(e, show_error_dialog=True)
+            error(e, show_error_dialog=True)

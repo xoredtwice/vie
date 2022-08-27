@@ -16,7 +16,7 @@ def import_pdf_files(input_path):
         try:
             info(str(count + 1) + "...." + pdf_path)
             paper = Paper()
-            paper = pdfParserUsingLayout(pdf_path)
+            paper = pdfParserUsingLayout(paper, pdf_path)
 
             # paper = nlpWrapper.extractPaperStructure(paper)
             # paper = nlpWrapper.extract_sentences_by_reference(paper)

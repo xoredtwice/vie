@@ -228,10 +228,6 @@ class Paper(mongoengine.Document):
 
         vd["id"] = str(self.id)
         vd["file_name"] = self.file_name
-
-        vd["sections"] = self.sections
-        vd["references"] = self.references
-        vd["mentions"] = self.mentions
         vd["flags"] = self.flags
         if "bib_approved" in vd["flags"]:
             vd["title"] = self.bib.title
@@ -240,8 +236,12 @@ class Paper(mongoengine.Document):
             vd["title"] = self.title
             vd["year"] = self.year            
 
+        vd["sections"] = self.sections
+        # vd["references"] = self.references
+        # vd["mentions"] = self.mentions
+ 
         vd["references"] = []
-        vd["citations"] = []
+        vd["mentions"] = []
         if self.id is not None:
             cursor = Opinion.objects(Q(in_paper_id=self.id) | Q(
                 about_paper_id=self.id))
@@ -249,8 +249,7 @@ class Paper(mongoengine.Document):
                 if opinion.in_paper_id == self.id:
                     vd["references"].append(opinion)
                 else:
-                    vd["citations"].append(opinion)
-
+                    vd["mentions"].append(opinion)
         return vd
 
     def getBibViewDict(self):
