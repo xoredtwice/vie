@@ -131,12 +131,12 @@ class ControlPanelLayout(QVBoxLayout):
     def onClicked_random(self):
         info("Querying a random paper")
         random_paper = getMongoWrapper().getRandomPaper()
-        if str(random_paper.id) not in self.query_papers.keys():
-            self.query_papers_list.append(random_paper)
-            self.query_list.addItem(str(random_paper.file_name))
-            self.query_papers[str(random_paper.id)] = random_paper
-            self.query_list.setCurrentRow(self.query_list.count() - 1)
-            self.onClicked_queryItem()
+        # if str(random_paper.id) not in self.query_papers.keys():
+        self.query_papers_list.append(random_paper)
+        self.query_list.addItem(str(random_paper.file_name))
+        self.query_papers[str(random_paper.id)] = random_paper
+        self.query_list.setCurrentRow(self.query_list.count() - 1)
+        self.onClicked_queryItem()
 
     def onClicked_queryItem(self):
         current_paper_index = self.query_list.currentRow()

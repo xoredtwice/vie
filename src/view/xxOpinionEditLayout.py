@@ -218,7 +218,7 @@ class OpinionEditLayout(QHBoxLayout):
             error(e, True)
 
     def onClicked_opiRefresh_button(self):
-        self.update(self.parent.active_paper.raw.title)
+        self.update(self.parent.active_paper.title)
 
     def onClicked_opinionListItem(self):
         current_paper_index = self.opinions_list.currentRow()
