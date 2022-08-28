@@ -99,7 +99,7 @@ class ControlPanelLayout(QVBoxLayout):
                 self.onClicked_queryItem()
 
         except Exception as e:
-            util.xxLogger.logException(e, True)
+            error(e, True)
 
     def onClicked_import(self):
         nlpWrapper = getNlpWrapper()
