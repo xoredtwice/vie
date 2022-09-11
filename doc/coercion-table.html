@@ -8,8 +8,7 @@
 			.center {
 				margin: auto;
 				width: 90%;
-				max-width: 1000px;
-				border: 3px solid green;
+				border: 3px solid black;
 			}
 			.styled-table {
 			    border-collapse: collapse;
@@ -52,20 +51,21 @@
 			}
 
 			.half {
-        position: absolute;
-        transform: translate(-50%, -50%);
+				display: inline-block;
         height: 25px;
-        width: 15px;
-        border-radius: 0px 40px 40px 0;
-        background-color: black;
-        margin-top: -8px;
+        width: 25px;
+        border-radius: 50%;
+        background-color: #e5e5f7;
+				opacity: 0.8;
+				background: repeating-linear-gradient( 45deg, #444, #FFF 5px, #e5e5f7 3px );
 			}
 			.empty {
 				height: 25px;
 				width: 25px;
-				background-color: #bbb;
+				background-color: #ddd;
 				border-radius: 50%;
 				border-color: #000;
+				border-width: 5px;
 				display: inline-block;
 			}
 
@@ -82,29 +82,29 @@
 			/* The actual popup */
 			.popup .popuptext {
 			  visibility: hidden;
-			  width: 300px;
-			  background-color: #196F3D;
+			  width: 500px;
+			  background-color: #d279a6;
 			  color: #fff;
 			  text-align: center;
-			  border-radius: 0px;
+			  border-radius: 3px;
 			  padding: 8px 0;
 			  position: absolute;
 			  z-index: 1;
 			  top: 125%;
 			  left: 50%;
-			  margin-left: -150px;
+			  margin-left: -250px;
 			}
 
 			/* Popup arrow */
 			.popup .popuptext::after {
 			  content: "";
 			  position: absolute;
-			  bottom: 100%;
+			  top: -25px;
 			  left: 50%;
-			  margin-left: -5px;
-			  border-width: 5px;
+			  margin-left: -10px;
+			  border-width: 10px;
 			  border-style: solid;
-			  border-color: #555 transparent transparent transparent;
+			  border-color: transparent transparent #222 transparent;
 			}
 
 			/* Toggle this class - hide and show the popup */
@@ -137,21 +137,26 @@
 		            <th colspan="5">Assumptions</th>
 		            <th colspan="5">Properties</th>
 		        </tr>
+
 		    </thead>
 		    <thead>
 		        <tr>
 		            <th></th>
 		            <th></th>
-		            <th><div class="popup" onclick="pop('0001-text')">A0<span class="popuptext" id="0001-text"></span></th>
-		            <th><div class="popup" onclick="pop('0002-text')">A1<span class="popuptext" id="0002-text"></span></th>
-		            <th><div class="popup" onclick="pop('0003-text')">A2<span class="popuptext" id="0003-text"></span></th>
-		            <th><div class="popup" onclick="pop('0004-text')">A3<span class="popuptext" id="0004-text"></span></th>
-		            <th><div class="popup" onclick="pop('0005-text')">A4<span class="popuptext" id="0005-text"></span></th>
-		            <th><div class="popup" onclick="pop('0006-text')">P5<span class="popuptext" id="0006-text"></span></th>
-		            <th><div class="popup" onclick="pop('0007-text')">P6<span class="popuptext" id="0007-text"></span></th>
-		            <th><div class="popup" onclick="pop('0008-text')">P7<span class="popuptext" id="0008-text"></span></th>
-		            <th><div class="popup" onclick="pop('0009-text')">P8<span class="popuptext" id="0009-text"></span></th>
-		            <th><div class="popup" onclick="pop('0010-text')">P9<span class="popuptext" id="0010-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0001-text')">A0<span id="0001"></span><span class="popuptext" id="0001-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0002-text')">A1<span id="0002"></span><span class="popuptext" id="0002-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0003-text')">A2<span id="0003"></span><span class="popuptext" id="0003-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0004-text')">A3<span id="0004"></span><span class="popuptext" id="0004-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0005-text')">A4<span id="0005"></span><span class="popuptext" id="0005-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0006-text')">P5<span id="0006"></span><span class="popuptext" id="0006-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0007-text')">P6<span id="0007"></span><span class="popuptext" id="0007-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0008-text')">P7<span id="0008"></span><span class="popuptext" id="0008-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0009-text')">P8<span id="0009"></span><span class="popuptext" id="0009-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0010-text')">P9<span id="0010"></span><span class="popuptext" id="0010-text"></span></th>
+		        </tr>
+		        <tr>
+		            <td colspan="4" height="26px"></td>
+		            <td colspan="8"></td>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -269,11 +274,7 @@
 		        </tr>
 		    	<thead>
 		        <tr>
-		            <td colspan="4" height="50px">Question</td>
-		            <td colspan="8">Answer</td>
-		        </tr>
-		        <tr>
-		            <td colspan="4" id="board" height="100px"></td>
+		            <td colspan="4" id="board" height="70px"></td>
 		            <td colspan="8" id="answer" width="50%"></td>
 		        </tr>
 		      </thead>
@@ -592,22 +593,34 @@
 				  let qid = "00" + id.substring(2);
 				  let pid = id.substring(0, 2) + "00";
 
-				 	if(openCircleId){
-				 		console.log(openCircleId);
-				 		pop(openCircleId);
+				 	if(!id.localeCompare(qid)){
+
+						 	if(openCircleId){
+						 		pop(openCircleId);
+						 	}
+						  openCircleId = "";
+
+						  if(openQuestionId){
+						  	pop(openQuestionId);
+						  }
+						  openQuestionId = qid;
+						  pop(qid);
 				 	}
-				  openCircleId = id;
-
-				  if(openQuestionId){
-				  	pop(openQuestionId);
-				  }
-				  openQuestionId = qid;
-
-
-				  document.getElementById("answer").innerHTML = "<b>" + popup.innerHTML + "</b>";
-				  document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + " " +document.getElementById(qid).innerHTML + "?</b>";
-				  pop(id);
-				  pop(qid);
+				 	else{
+						 	if(openCircleId){
+						 		pop(openCircleId);
+						 	}
+						  openCircleId = id;
+						  pop(id);
+						  
+						  if(openQuestionId){
+						  	pop(openQuestionId);
+						  }
+						  openQuestionId = qid;
+						  pop(qid);
+				 	}
+				  // document.getElementById("answer").innerHTML = "<b>" + popup.innerHTML + "</b>";
+				  // document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + " " +document.getElementById(qid).innerHTML + "?</b>";
 				}
 		</script>
   </body>
