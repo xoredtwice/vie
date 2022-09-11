@@ -7,17 +7,17 @@
     <style>
 			.center {
 				margin: auto;
-				width: 60%;
+				width: 90%;
+				max-width: 1000px;
 				border: 3px solid green;
-				padding: 100px;
 			}
 			.styled-table {
 			    border-collapse: collapse;
-			    margin: 25px 0;
+			    margin: auto;
 			    font-size: 1.2em;
 			    font-family: sans-serif;
-			    min-width: 400px;
 			    width:  100%;
+			    max-width: 700px;
 			    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 			}
 			.styled-table thead tr {
@@ -90,7 +90,7 @@
 			  padding: 8px 0;
 			  position: absolute;
 			  z-index: 1;
-			  bottom: 125%;
+			  top: 125%;
 			  left: 50%;
 			  margin-left: -150px;
 			}
@@ -99,7 +99,7 @@
 			.popup .popuptext::after {
 			  content: "";
 			  position: absolute;
-			  top: 100%;
+			  bottom: 100%;
 			  left: 50%;
 			  margin-left: -5px;
 			  border-width: 5px;
@@ -142,130 +142,130 @@
 		        <tr>
 		            <th></th>
 		            <th></th>
-		            <th><div class="popup" onmouseover="pop('0001-text')" onmouseout="pop('0001-text')">A1<span class="popuptext" id="0001-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0002-text')" onmouseout="pop('0002-text')">A2<span class="popuptext" id="0002-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0003-text')" onmouseout="pop('0003-text')">A3<span class="popuptext" id="0003-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0004-text')" onmouseout="pop('0004-text')">A4<span class="popuptext" id="0004-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0005-text')" onmouseout="pop('0005-text')">A5<span class="popuptext" id="0005-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0006-text')" onmouseout="pop('0006-text')">P1<span class="popuptext" id="0006-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0007-text')" onmouseout="pop('0007-text')">P2<span class="popuptext" id="0007-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0008-text')" onmouseout="pop('0008-text')">P3<span class="popuptext" id="0008-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0009-text')" onmouseout="pop('0009-text')">P4<span class="popuptext" id="0009-text"></span></th>
-		            <th><div class="popup" onmouseover="pop('0010-text')" onmouseout="pop('0010-text')">P5<span class="popuptext" id="0010-text"></span></th>
+		            <th><div class="popup" onclick="pop('0001-text')">A0<span class="popuptext" id="0001-text"></span></th>
+		            <th><div class="popup" onclick="pop('0002-text')">A1<span class="popuptext" id="0002-text"></span></th>
+		            <th><div class="popup" onclick="pop('0003-text')">A2<span class="popuptext" id="0003-text"></span></th>
+		            <th><div class="popup" onclick="pop('0004-text')">A3<span class="popuptext" id="0004-text"></span></th>
+		            <th><div class="popup" onclick="pop('0005-text')">A4<span class="popuptext" id="0005-text"></span></th>
+		            <th><div class="popup" onclick="pop('0006-text')">P5<span class="popuptext" id="0006-text"></span></th>
+		            <th><div class="popup" onclick="pop('0007-text')">P6<span class="popuptext" id="0007-text"></span></th>
+		            <th><div class="popup" onclick="pop('0008-text')">P7<span class="popuptext" id="0008-text"></span></th>
+		            <th><div class="popup" onclick="pop('0009-text')">P8<span class="popuptext" id="0009-text"></span></th>
+		            <th><div class="popup" onclick="pop('0010-text')">P9<span class="popuptext" id="0010-text"></span></th>
 		        </tr>
 		    </thead>
 		    <tbody>
 		        <tr>
 		            <td>Baseline(coercible)</td>
 		            <td> <a href="https://vote.heliosvoting.org/" id="0100">Helios(2008)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0101-text')"><span id="0101"></span><span class="popuptext" id="0101-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0102-text')"><span id="0102"></span><span class="popuptext" id="0102-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0103-text')"><span id="0103"></span><span class="popuptext" id="0103-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0104-text')"><span id="0104"></span><span class="popuptext" id="0104-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0105-text')"><span id="0105"></span><span class="popuptext" id="0105-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0106-text')"><span id="0106"></span><span class="popuptext" id="0106-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0107-text')"><span id="0107"></span><span class="popuptext" id="0107-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0108-text')"><span id="0108"></span><span class="popuptext" id="0108-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0109-text')"><span id="0109"></span><span class="popuptext" id="0109-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0110-text')"><span id="0110"></span><span class="popuptext" id="0110-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0101-text')"><span id="0101"></span><span class="popuptext" id="0101-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0102-text')"><span id="0102"></span><span class="popuptext" id="0102-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0103-text')"><span id="0103"></span><span class="popuptext" id="0103-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0104-text')"><span id="0104"></span><span class="popuptext" id="0104-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0105-text')"><span id="0105"></span><span class="popuptext" id="0105-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0106-text')"><span id="0106"></span><span class="popuptext" id="0106-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0107-text')"><span id="0107"></span><span class="popuptext" id="0107-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0108-text')"><span id="0108"></span><span class="popuptext" id="0108-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0109-text')"><span id="0109"></span><span class="popuptext" id="0109-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0110-text')"><span id="0110"></span><span class="popuptext" id="0110-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Fake Credentials</td>
 		            <td> <a href="https://eprint.iacr.org/2002/165.pdf" id="0200">JCJ(2005)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0201-text')"><span id="0201"></span><span class="popuptext" id="0201-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0202-text')"><span id="0202"></span><span class="popuptext" id="0202-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0203-text')"><span id="0203"></span><span class="popuptext" id="0203-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0204-text')"><span id="0204"></span><span class="popuptext" id="0204-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0205-text')"><span id="0205"></span><span class="popuptext" id="0205-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0206-text')"><span id="0206"></span><span class="popuptext" id="0206-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0207-text')"><span id="0207"></span><span class="popuptext" id="0207-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0208-text')"><span id="0208"></span><span class="popuptext" id="0208-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0209-text')"><span id="0209"></span><span class="popuptext" id="0209-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0210-text')"><span id="0210"></span><span class="popuptext" id="0210-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0201-text')"><span id="0201"></span><span class="popuptext" id="0201-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0202-text')"><span id="0202"></span><span class="popuptext" id="0202-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0203-text')"><span id="0203"></span><span class="popuptext" id="0203-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0204-text')"><span id="0204"></span><span class="popuptext" id="0204-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0205-text')"><span id="0205"></span><span class="popuptext" id="0205-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0206-text')"><span id="0206"></span><span class="popuptext" id="0206-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0207-text')"><span id="0207"></span><span class="popuptext" id="0207-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0208-text')"><span id="0208"></span><span class="popuptext" id="0208-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0209-text')"><span id="0209"></span><span class="popuptext" id="0209-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0210-text')"><span id="0210"></span><span class="popuptext" id="0210-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Masked Ballots</td>
 		            <td> <a href="https://link.springer.com/chapter/10.1007/978-3-642-04135-8_2" id="0300">WeBu09(2009)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0301-text')"><span id="0301"></span><span class="popuptext" id="0301-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0302-text')"><span id="0302"></span><span class="popuptext" id="0302-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0303-text')"><span id="0303"></span><span class="popuptext" id="0303-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0304-text')"><span id="0304"></span><span class="popuptext" id="0304-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0305-text')"><span id="0305"></span><span class="popuptext" id="0305-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0306-text')"><span id="0306"></span><span class="popuptext" id="0306-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0307-text')"><span id="0307"></span><span class="popuptext" id="0307-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0308-text')"><span id="0308"></span><span class="popuptext" id="0308-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0309-text')"><span id="0309"></span><span class="popuptext" id="0309-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0310-text')"><span id="0310"></span><span class="popuptext" id="0310-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0301-text')"><span id="0301"></span><span class="popuptext" id="0301-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0302-text')"><span id="0302"></span><span class="popuptext" id="0302-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0303-text')"><span id="0303"></span><span class="popuptext" id="0303-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0304-text')"><span id="0304"></span><span class="popuptext" id="0304-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0305-text')"><span id="0305"></span><span class="popuptext" id="0305-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0306-text')"><span id="0306"></span><span class="popuptext" id="0306-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0307-text')"><span id="0307"></span><span class="popuptext" id="0307-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0308-text')"><span id="0308"></span><span class="popuptext" id="0308-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0309-text')"><span id="0309"></span><span class="popuptext" id="0309-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0310-text')"><span id="0310"></span><span class="popuptext" id="0310-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Panic Passwords</td>
 		            <td> <a href="https://users.encs.concordia.ca/~clark/papers/2011_fc.pdf" id="0400">Selections(2011)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0401-text')"><span id="0401"></span><span class="popuptext" id="0401-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0402-text')"><span id="0402"></span><span class="popuptext" id="0402-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0403-text')"><span id="0403"></span><span class="popuptext" id="0403-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0404-text')"><span id="0404"></span><span class="popuptext" id="0404-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0405-text')"><span id="0405"></span><span class="popuptext" id="0405-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0406-text')"><span id="0406"></span><span class="popuptext" id="0406-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0407-text')"><span id="0407"></span><span class="popuptext" id="0407-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0408-text')"><span id="0408"></span><span class="popuptext" id="0408-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0409-text')"><span id="0409"></span><span class="popuptext" id="0409-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0410-text')"><span id="0410"></span><span class="popuptext" id="0410-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0401-text')"><span id="0401"></span><span class="popuptext" id="0401-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0402-text')"><span id="0402"></span><span class="popuptext" id="0402-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0403-text')"><span id="0403"></span><span class="popuptext" id="0403-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0404-text')"><span id="0404"></span><span class="popuptext" id="0404-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0405-text')"><span id="0405"></span><span class="popuptext" id="0405-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0406-text')"><span id="0406"></span><span class="popuptext" id="0406-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0407-text')"><span id="0407"></span><span class="popuptext" id="0407-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0408-text')"><span id="0408"></span><span class="popuptext" id="0408-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0409-text')"><span id="0409"></span><span class="popuptext" id="0409-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0410-text')"><span id="0410"></span><span class="popuptext" id="0410-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Decoy Ballots</td>
 		            <td> <a href="https://rsvoting.org/" id="0500">RS-Voting(2012)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0501-text')"><span id="0501"></span><span class="popuptext" id="0501-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0502-text')"><span id="0502"></span><span class="popuptext" id="0502-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0503-text')"><span id="0503"></span><span class="popuptext" id="0503-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0504-text')"><span id="0504"></span><span class="popuptext" id="0504-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0505-text')"><span id="0505"></span><span class="popuptext" id="0505-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0506-text')"><span id="0506"></span><span class="popuptext" id="0506-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0507-text')"><span id="0507"></span><span class="popuptext" id="0507-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0508-text')"><span id="0508"></span><span class="popuptext" id="0508-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0509-text')"><span id="0509"></span><span class="popuptext" id="0509-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0510-text')"><span id="0510"></span><span class="popuptext" id="0510-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0501-text')"><span id="0501"></span><span class="popuptext" id="0501-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0502-text')"><span id="0502"></span><span class="popuptext" id="0502-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0503-text')"><span id="0503"></span><span class="popuptext" id="0503-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0504-text')"><span id="0504"></span><span class="popuptext" id="0504-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0505-text')"><span id="0505"></span><span class="popuptext" id="0505-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0506-text')"><span id="0506"></span><span class="popuptext" id="0506-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0507-text')"><span id="0507"></span><span class="popuptext" id="0507-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0508-text')"><span id="0508"></span><span class="popuptext" id="0508-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0509-text')"><span id="0509"></span><span class="popuptext" id="0509-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0510-text')"><span id="0510"></span><span class="popuptext" id="0510-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Secure Hardware</td>
 		            <td> <a href="https://link.springer.com/chapter/10.1007/978-3-662-48000-7_37" id="0600">AOZZ(2015)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0601-text')"><span id="0601"></span><span class="popuptext" id="0601-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0602-text')"><span id="0602"></span><span class="popuptext" id="0602-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0603-text')"><span id="0603"></span><span class="popuptext" id="0603-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0604-text')"><span id="0604"></span><span class="popuptext" id="0604-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0605-text')"><span id="0605"></span><span class="popuptext" id="0605-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0606-text')"><span id="0606"></span><span class="popuptext" id="0606-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0607-text')"><span id="0607"></span><span class="popuptext" id="0607-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0608-text')"><span id="0608"></span><span class="popuptext" id="0608-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0609-text')"><span id="0609"></span><span class="popuptext" id="0609-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0610-text')"><span id="0610"></span><span class="popuptext" id="0610-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0601-text')"><span id="0601"></span><span class="popuptext" id="0601-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0602-text')"><span id="0602"></span><span class="popuptext" id="0602-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0603-text')"><span id="0603"></span><span class="popuptext" id="0603-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0604-text')"><span id="0604"></span><span class="popuptext" id="0604-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0605-text')"><span id="0605"></span><span class="popuptext" id="0605-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0606-text')"><span id="0606"></span><span class="popuptext" id="0606-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0607-text')"><span id="0607"></span><span class="popuptext" id="0607-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0608-text')"><span id="0608"></span><span class="popuptext" id="0608-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0609-text')"><span id="0609"></span><span class="popuptext" id="0609-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0610-text')"><span id="0610"></span><span class="popuptext" id="0610-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Re-voting(E2E)</td>
 		            <td> <a href="https://www.usenix.org/conference/usenixsecurity20/presentation/lueks" id="0700">VoteAgain(2020)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0701-text')"><span id="0701"></span><span class="popuptext" id="0701-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0702-text')"><span id="0702"></span><span class="popuptext" id="0702-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0703-text')"><span id="0703"></span><span class="popuptext" id="0703-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0704-text')"><span id="0704"></span><span class="popuptext" id="0704-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0705-text')"><span id="0705"></span><span class="popuptext" id="0705-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0706-text')"><span id="0706"></span><span class="popuptext" id="0706-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0707-text')"><span id="0707"></span><span class="popuptext" id="0707-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0708-text')"><span id="0708"></span><span class="popuptext" id="0708-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0709-text')"><span id="0709"></span><span class="popuptext" id="0709-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0710-text')"><span id="0710"></span><span class="popuptext" id="0710-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0701-text')"><span id="0701"></span><span class="popuptext" id="0701-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0702-text')"><span id="0702"></span><span class="popuptext" id="0702-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0703-text')"><span id="0703"></span><span class="popuptext" id="0703-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0704-text')"><span id="0704"></span><span class="popuptext" id="0704-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0705-text')"><span id="0705"></span><span class="popuptext" id="0705-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0706-text')"><span id="0706"></span><span class="popuptext" id="0706-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0707-text')"><span id="0707"></span><span class="popuptext" id="0707-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0708-text')"><span id="0708"></span><span class="popuptext" id="0708-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0709-text')"><span id="0709"></span><span class="popuptext" id="0709-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0710-text')"><span id="0710"></span><span class="popuptext" id="0710-text"></span></td>
 		        </tr>
 		        <tr>
 		            <td>Hedgehogs</td>
 		            <td> <a href="https://votexx.org/" id="0800">VoteXX(2022)</a> </td>
-		            <td><div class="popup" onmouseover="toAnswer('0801-text')"><span id="0801"></span><span class="popuptext" id="0801-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0802-text')"><span id="0802"></span><span class="popuptext" id="0802-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0803-text')"><span id="0803"></span><span class="popuptext" id="0803-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0804-text')"><span id="0804"></span><span class="popuptext" id="0804-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0805-text')"><span id="0805"></span><span class="popuptext" id="0805-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0806-text')"><span id="0806"></span><span class="popuptext" id="0806-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0807-text')"><span id="0807"></span><span class="popuptext" id="0807-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0808-text')"><span id="0808"></span><span class="popuptext" id="0808-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0809-text')"><span id="0809"></span><span class="popuptext" id="0809-text"></span></td>
-		            <td><div class="popup" onmouseover="toAnswer('0810-text')"><span id="0810"></span><span class="popuptext" id="0810-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0801-text')"><span id="0801"></span><span class="popuptext" id="0801-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0802-text')"><span id="0802"></span><span class="popuptext" id="0802-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0803-text')"><span id="0803"></span><span class="popuptext" id="0803-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0804-text')"><span id="0804"></span><span class="popuptext" id="0804-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0805-text')"><span id="0805"></span><span class="popuptext" id="0805-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0806-text')"><span id="0806"></span><span class="popuptext" id="0806-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0807-text')"><span id="0807"></span><span class="popuptext" id="0807-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0808-text')"><span id="0808"></span><span class="popuptext" id="0808-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0809-text')"><span id="0809"></span><span class="popuptext" id="0809-text"></span></td>
+		            <td><div class="popup" onclick="toAnswer('0810-text')"><span id="0810"></span><span class="popuptext" id="0810-text"></span></td>
 		        </tr>
 		    	<thead>
 		        <tr>
@@ -282,32 +282,20 @@
 
 
 		<script>
+				var openCircleId = "";
+				var openQuestionId = "";
 
 				// Questions
-				document.getElementById('0001-text').innerHTML = "tolerates coercion when no untappable registration"; 
-				document.getElementById('0002-text').innerHTML = "tolerates coercion when EA colludes with coercer"; 
-				document.getElementById('0003-text').innerHTML = "tolerates coercion when Coercer can corrupt any device"; 
-				document.getElementById('0004-text').innerHTML = "tolerates coercion when Coercer can act at any time"; 
-				document.getElementById('0005-text').innerHTML = "tolerates coercion when Tolerates Coercer learning every secrets"; 
-				document.getElementById('0006-text').innerHTML = "Low cognitive burden"; 
-				document.getElementById('0007-text').innerHTML = "Can fully override coercion"; 
-				document.getElementById('0008-text').innerHTML = "Inexpensive"; 
-				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
+				document.getElementById('0001-text').innerHTML = "No untappable registration"; 
+				document.getElementById('0002-text').innerHTML = "Dishonest EA"; 
+				document.getElementById('0003-text').innerHTML = "No special device is required"; 
+				document.getElementById('0004-text').innerHTML = "Coercion can take place at any time"; 
+				document.getElementById('0005-text').innerHTML = "Influencer learns voting secret key"; 
+				document.getElementById('0006-text').innerHTML = "Can fully override coercion"; 
+				document.getElementById('0007-text').innerHTML = "Inexpensive"; 
+				document.getElementById('0008-text').innerHTML = "Most ballots are real"; 
+				document.getElementById('0009-text').innerHTML = "Low cognitive burden"; 
 				document.getElementById('0010-text').innerHTML = "Has Security proof"; // full for UC half for game-based
-
-				document.getElementById('0001-text').innerHTML = "Scenario 1: Registration through tappable channel."; 
-				document.getElementById('0002-text').innerHTML = "Scenario 2: EA colludes with coercer."; 
-				document.getElementById('0003-text').innerHTML = "Scenario 3: Coercer can corrupt any device."; 
-				document.getElementById('0004-text').innerHTML = "Scenario 4: Coercer can act at any time."; 
-				document.getElementById('0005-text').innerHTML = "Scenario 5: Coercer can learning every secrets."; 
-				
-				document.getElementById('0006-text').innerHTML = "Low cognitive burden"; 
-				document.getElementById('0007-text').innerHTML = "Can fully override coercion"; 
-				document.getElementById('0008-text').innerHTML = "Computational cost"; 
-				document.getElementById('0009-text').innerHTML = "Most ballots are real"; 
-				document.getElementById('0010-text').innerHTML = "Has Security proof"; 
-
-				// 0011: "No special device is not available" -> implicit in expensive column
 				
 				// ----------------------------------------
 				// 01.Helios
@@ -591,22 +579,35 @@
 
 				// When the user clicks on div, open the popup
 				function pop(id) {
-				  var popup = document.getElementById(id);
-				  popup.classList.toggle("show");
-
-				  document.getElementById("board").innerHTML = popup.innerHTML;
-				  document.getElementById("answer").innerHTML = "";
+				  	var popup = document.getElementById(id);
+				  	popup.classList.toggle("show");
 				}
 
 				
 				function toAnswer(id) {
+				  
+				  // document.gtElementByClass("show").toggle("show")
+				  // pop(openPopId);
 				  var popup = document.getElementById(id);
 				  let qid = "00" + id.substring(2);
 				  let pid = id.substring(0, 2) + "00";
 
+				 	if(openCircleId){
+				 		console.log(openCircleId);
+				 		pop(openCircleId);
+				 	}
+				  openCircleId = id;
+
+				  if(openQuestionId){
+				  	pop(openQuestionId);
+				  }
+				  openQuestionId = qid;
+
+
 				  document.getElementById("answer").innerHTML = "<b>" + popup.innerHTML + "</b>";
 				  document.getElementById("board").innerHTML = "<b>" + document.getElementById(pid).innerHTML + " " +document.getElementById(qid).innerHTML + "?</b>";
-				  // pop(qid);
+				  pop(id);
+				  pop(qid);
 				}
 		</script>
   </body>
