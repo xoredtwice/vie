@@ -101,7 +101,6 @@ class NlpWrapper:
 
     # comparing to strings, finding one in another
     def compare(self, str1, ref_str):
-        logger = util.xxLogger.getLogger()
         result = 1.0
 
         if isinstance(str1, str) and isinstance(ref_str, str):
@@ -336,8 +335,6 @@ class NlpWrapper:
         return paper
 
     def extractReferenceEntryManually(self, text):
-        logger = util.xxLogger.getLogger()
-
         ref = {"tag": "", "text": "", "view_tag": ""}
 
         if re.match(r"^\[.*\d+.*\]", text.strip()):

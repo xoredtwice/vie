@@ -137,8 +137,8 @@ class PaperEditLayout(QVBoxLayout):
 
     def addPaperFlag(self, text):
         if self.parent.active_paper is not None:
-            if text not in self.parent.active_paper.raw.flags:
-                self.parent.active_paper.raw.flags.append(text)
+            if text not in self.parent.active_paper.flags:
+                self.parent.active_paper.flags.append(text)
                 self.parent.active_paper.save()
                 self.update()
 
@@ -215,10 +215,10 @@ class PaperEditLayout(QVBoxLayout):
         new_text = self.showEditOrUpdateDialog(text, "flag")
         if new_text is not None and new_text != text:
             if text != "":
-                if text in self.parent.active_paper.raw.flags:
-                    self.parent.active_paper.raw.flags.remove(text)
-            if new_text not in self.parent.active_paper.raw.flags:
-                self.parent.active_paper.raw.flags.append(new_text)
+                if text in self.parent.active_paper.flags:
+                    self.parent.active_paper.flags.remove(text)
+            if new_text not in self.parent.active_paper.flags:
+                self.parent.active_paper.flags.append(new_text)
             self.parent.active_paper.save()
             self.update()
 
@@ -244,7 +244,7 @@ class PaperEditLayout(QVBoxLayout):
                     self.parent, "Import " + text + " manually ",
                     "Reference Strings of " + text)
                 if ok:
-                    logger.info(
+                    info(
                         "importing " + text + " from string: " + return_text)
                     for line in return_text.split("\n\n"):
                         ref = nlpWrapper.extractReferenceEntryManually(line)

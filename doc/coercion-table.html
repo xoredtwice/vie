@@ -59,6 +59,15 @@
 				opacity: 0.8;
 				background: repeating-linear-gradient( 45deg, #444, #FFF 5px, #e5e5f7 3px );
 			}
+			.weird {
+				display: inline-block;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background-color: #e5e5f7;
+				opacity: 0.8;
+				background: repeating-linear-gradient( 45deg, #444, #FFF 5px, #e5e5f7 3px );
+			}
 			.empty {
 				height: 25px;
 				width: 25px;
@@ -134,8 +143,8 @@
 		        <tr>
 		            <th>Type</th>
 		            <th>Example</th>
-		            <th colspan="5">Assumptions</th>
-		            <th colspan="5">Properties</th>
+		            <th colspan="6">Assumptions</th>
+		            <th colspan="4">Properties</th>
 		        </tr>
 
 		    </thead>
@@ -148,7 +157,7 @@
 		            <th><div class="popup" onclick="toAnswer('0003-text')">A2<span id="0003"></span><span class="popuptext" id="0003-text"></span></th>
 		            <th><div class="popup" onclick="toAnswer('0004-text')">A3<span id="0004"></span><span class="popuptext" id="0004-text"></span></th>
 		            <th><div class="popup" onclick="toAnswer('0005-text')">A4<span id="0005"></span><span class="popuptext" id="0005-text"></span></th>
-		            <th><div class="popup" onclick="toAnswer('0006-text')">P5<span id="0006"></span><span class="popuptext" id="0006-text"></span></th>
+		            <th><div class="popup" onclick="toAnswer('0006-text')">A5<span id="0006"></span><span class="popuptext" id="0006-text"></span></th>
 		            <th><div class="popup" onclick="toAnswer('0007-text')">P6<span id="0007"></span><span class="popuptext" id="0007-text"></span></th>
 		            <th><div class="popup" onclick="toAnswer('0008-text')">P7<span id="0008"></span><span class="popuptext" id="0008-text"></span></th>
 		            <th><div class="popup" onclick="toAnswer('0009-text')">P8<span id="0009"></span><span class="popuptext" id="0009-text"></span></th>
@@ -286,81 +295,83 @@
 				var openCircleId = "";
 				var openQuestionId = "";
 
+				// 5a: Influencer can learn all keys required by the protocol and any other information stored by the voter
+				// 5b: influencer can learn every action taken by the voter.
 				// Questions
-				document.getElementById('0001-text').innerHTML = "No untappable registration"; 
-				document.getElementById('0002-text').innerHTML = "Dishonest EA"; 
-				document.getElementById('0003-text').innerHTML = "No special device is required"; 
-				document.getElementById('0004-text').innerHTML = "Coercion can take place at any time"; 
-				document.getElementById('0005-text').innerHTML = "Influencer learns voting secret key"; 
-				document.getElementById('0006-text').innerHTML = "Can fully override coercion"; 
-				document.getElementById('0007-text').innerHTML = "Inexpensive"; 
-				document.getElementById('0008-text').innerHTML = "Most ballots are real"; 
-				document.getElementById('0009-text').innerHTML = "Low cognitive burden"; 
-				document.getElementById('0010-text').innerHTML = "Has Security proof"; // full for UC half for game-based
-				
+				// System resists coercion when the influencer: (0) 
+				document.getElementById('0001-text').innerHTML = "Influencer acts before/during registration"; 
+				document.getElementById('0002-text').innerHTML = "Influencer colludes with the EA"; 
+				document.getElementById('0003-text').innerHTML = "Influencer colludes with hardware manufactures"; 
+				document.getElementById('0004-text').innerHTML = "Influencer acts at any time"; 
+				document.getElementById('0005-text').innerHTML = "Influencer learns all information stored by the voter, including all keys required by the protocol"; 
+				document.getElementById('0006-text').innerHTML = "Influencer learns every action taken by the vote"; 
+				document.getElementById('0007-text').innerHTML = "voter can fully override coercion"; 
+				document.getElementById('0008-text').innerHTML = "inexpensive"; 
+				document.getElementById('0009-text').innerHTML = "low cognitive burden"; 
+				document.getElementById('0010-text').innerHTML = "has Security proof(none/game-based/UC)"; // full for UC half for game-based
+
 				// ----------------------------------------
 				// 01.Helios
 				// ----------------------------------------
 
-				// Helios: "System tolerates coercion when: no untappable registration"
+				// Helios: "Influencer acts before/during registration"
 				fillCell("0101", "full", "Registration happens through email.");
 
-				// Helios: "System tolerates coercion when: EA colludes with coercer"
+				// Helios: "Influencer colludes with the EA"
 				fillCell("0102", "empty", "Helios does not use threshold .");
 
-				// Helios: No special device required? "System tolerates coercion when: Coercer can corrupt any device"
+				// Helios: "Influencer colludes with hardware manufactures"
 				fillCell("0103", "empty", "Helios uses personal computers and browsers.");
 
-				// Helios: System tolerates coercion when: Coercer can corrupt any device?
+				// Helios: "Influencer acts at any time"
 				fillCell("0104", "empty", "N/A");
 
-				// Helios: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				// Helios: "Influencer learns all information stored by the voter, including all keys required by the protocol"
 				fillCell("0105", "empty", "Helios has not been designed to tolerate coercion at all.");
 
-
-				// Helios: Can fully override coercion?
+				// Helios: "Influencer learns every action taken by the vote"
 				fillCell("0106", "empty", "N/A");
 
-				// Helios: Inexpensive?
-				fillCell("0107", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
+				// Helios: "voter can fully override coercion"
+				fillCell("0107", "empty", "All ballots are real.");
 
-				// Helios: Most ballots are real?
-				fillCell("0108", "full", "All ballots are real.");
+				// Helios: Inexpensive?
+				fillCell("0108", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
 
 				// Helios: Low cognitive burden?
 				fillCell("0109", "full", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
 				
 				// Helios: Has UC proof?
-				fillCell("0110", "empty", "Helios does not provide a UC proof.");
+				fillCell("0110", "half", "Helios does not provide a UC proof.");
 
 
 				// ----------------------------------------
 				// 02.JCJ
 				// ----------------------------------------
 
-				// JCJ: System tolerates coercion when: no untappable registration?
-				fillCell("0201", "full", '"The function register(SKR, i, k1) → (ski, pki) takes as input the private registrar key SKR, a (voter) identifier i and a security parameter k1, and outputs a key pair (ski, pki). This is computed jointly by players in R, possibly in interaction with voter Vi."');
+				// JCJ: "Influencer acts before/during registration"
+				fillCell("0201", "empty", '"The function register(SKR, i, k1) → (ski, pki) takes as input the private registrar key SKR, a (voter) identifier i and a security parameter k1, and outputs a key pair (ski, pki). This is computed jointly by players in R, possibly in interaction with voter Vi."');
 
-				// JCJ: System tolerates coercion when: EA colludes with coercer?
+				// JCJ: "Influencer colludes with the EA"
 				fillCell("0202", "half", '"We assume that the majority of players in R are honest, and can thus ensure that the R provides Vi with acorrect credential. Nonetheless, it is possible for R to furnish Vi with a proof that Si is a ciphertext on σi. To enforce coercion-resistance in the case where erasure of secrets by voters is not automatic, a designated verifier proof [28] must be employed for this proof. We note that credentials may be used for multiple elections."');
 
-				// JCJ: System tolerates coercion when: Coercer can corrupt any device?
-				fillCell("0203", "empty", "");
+				// JCJ: "Influencer colludes with hardware manufactures"
+				fillCell("0203", "full", "");
 
-				// JCJ: Tolerates coercion at any time?
+				// JCJ: "Influencer acts at any time"
 				fillCell("0204", "empty", '"We make the assumption that the registration phase proceeds without any corruption of voters. This assumption is at some level a requirement for a coercion-free election, as an attacker capable of corrupting and seizing the credentials of a voter in this initial phase can mount a simulation attack."');
 
-				// JCJ: Tolerates Coercer learning secrets?
+				// JCJ: "Influencer learns all information stored by the voter, including all keys required by the protocol"
 				fillCell("0205", "empty", "");
 
-				// JCJ: Can fully override coercion?
-				fillCell("0206", "full", "");
+				// JCJ: "Influencer learns every action taken by the vote"
+				fillCell("0206", "empty", "");
 
-				// JCJ: Inexpensive?
+				// JCJ: "voter can fully override coercion"
 				fillCell("0207", "full", "");
 
-				// JCJ: Most ballots are real?
-				fillCell("0208", "full", "All ballots are real.");
+				// JCJ: Inexpensive?
+				fillCell("0208", "full", "");
 
 				// JCJ: Low cognitive burden?
 				fillCell("0209", "full", "");
@@ -372,28 +383,28 @@
 				// 03.WeBu09
 				// ----------------------------------------
 
-				// WeBu09: System tolerates coercion when: no untappable registration?
+				// WeBu09: "Influencer acts before/during registration"
 				fillCell("0301", "empty", "");
 
-				// WeBu09: System tolerates coercion when: EA colludes with coercer?
+				// WeBu09: "Influencer colludes with the EA"
 				fillCell("0302", "full", "");
 
-				// WeBu09: System tolerates coercion when: Coercer can corrupt any device?
+				// WeBu09: "Influencer colludes with hardware manufactures"
 				fillCell("0303", "full", "");
 
-				// WeBu09: System tolerates coercion when: Coercer can act at any time?
+				// WeBu09: "Influencer acts at any time"
 				fillCell("0304", "empty", "");
 
-				// WeBu09: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				// WeBu09: "Influencer learns all information stored by the voter, including all keys required by the protocol"
 				fillCell("0305", "empty", "");
 
-				// WeBu09: Can fully override coercion?
-				fillCell("0306", "half", "");
+				// WeBu09: "Influencer learns every action taken by the vote"
+				fillCell("0306", "empty", "");
 
-				// WeBu09: Inexpensive?
+				// WeBu09: "voter can fully override coercion"
 				fillCell("0307", "full", "");
 
-				// WeBu09: Most ballots are real?
+				// WeBu09: Inexpensive?
 				fillCell("0308", "full", "");
 
 				// WeBu09: Low cognitive burden?
@@ -406,30 +417,29 @@
 				// 04.Selections
 				// ----------------------------------------
 
-				// Selections: System tolerates coercion when: no untappable registration?
+				// Selections: "Influencer acts before/during registration"
 				fillCell("0401", "empty", "An adversary that tap the registration can learn all the passwords.");
 
-				// Selections: System tolerates coercion when: EA colludes with coercer?
-				fillCell("0402", "half", "A threhsold of EA can decrypt user's real password.");
+				// Selections: "Influencer colludes with the EA"
+				fillCell("0402", "full", "A threhsold of EA can decrypt user's real password.");
 
-				// Selections: System tolerates coercion when: Coercer can corrupt any device?
+				// Selections: "Influencer colludes with hardware manufactures"
 				fillCell("0403", "full", "No trusted hardware is required.");
 
-				// Selections: System tolerates coercion when: Coercer can act at any time?
-				fillCell("0404", "half", "Coercer can act anytime outside the registration.");
+				// Selections: "Influencer acts at any time"
+				fillCell("0404", "empty", "Coercer can act anytime outside the registration.");
 
-				// Selections: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				// Selections: "Influencer learns all information stored by the voter, including all keys required by the protocol"
 				fillCell("0405", "empty", "An adversary that tap the registration can learn all the passwords.");
 
-				// Selections: Can fully override coercion?
-				fillCell("0406", "full", "Only the real votes get counted.");
+				// Selections: "Influencer learns every action taken by the vote"
+				fillCell("0406", "empty", "Only the real votes get counted.");
+
+				// Selections: "voter can fully override coercion"
+				fillCell("0407", "full", "");
 
 				// Selections: Inexpensive?
-				fillCell("0407", "full", "No special hardware or paper.");
-
-				// Selections: Most ballots are real? 
-				// this column is to punish decoy. already captured in expensive and by special symbol. (centered dot)
-				fillCell("0408", "full", "");
+				fillCell("0408", "full", "No special hardware or paper.");
 
 				// Selections: Low cognitive burden?
 				fillCell("0409", "half", "User needs to generate a panic password and deceive the coercer.");
@@ -441,63 +451,63 @@
 				// 05.RS-Voting
 				// ----------------------------------------
 
-				// RS-Voting: System tolerates coercion when: no untappable registration is available?
+				// RS-Voting: "Influencer acts before/during registration"
 				fillCell("0501", "full", "Decoys can be sent to randomly selected voters that they already have registered.");
 
-				// RS-Voting: System tolerates coercion when: EA colludes with coercer?
-				fillCell("0502", "empty", "EA can distinguish the decoy and real ballot.");
+				// RS-Voting: "Influencer colludes with the EA"
+				fillCell("0502", "half", "EA can distinguish the decoy and real ballot.");
 
-				// RS-Voting: System tolerates coercion when: Coercer can corrupt any device?
+				// RS-Voting: "Influencer colludes with hardware manufactures"
 				fillCell("0503", "full", "There is no device to corrupt in 7th estate implementation.");
 
-				// RS-Voting: System tolerates coercion when: Coercer can act at any time?
-				fillCell("0504", "full", "Only through colluding with the EA that has been captured in A2.");
+				// RS-Voting: "Influencer acts at any time"
+				fillCell("0504", "half", "Only through colluding with the EA that has been captured in A2.");
 
-				// RS-Voting: System tolerates coercion when: Tolerates Coercer learning every secrets?
-				fillCell("0505", "full", "Decoy Voter has no actual useful secrets.");
+				// RS-Voting: "Influencer learns all information stored by the voter, including all keys required by the protocol"
+				fillCell("0505", "half", "Decoy Voter has no actual useful secrets.");
 
-				// RS-Voting: Can fully override coercion? (ask Jeremy, important)
-				fillCell("0506", "half", "Not in the current implementation but possible.");
+				// RS-Voting: "Influencer learns every action taken by the vote"
+				fillCell("0506", "empty", "Not in the current implementation but possible.");
+
+				// RS-Voting: "voter can fully override coercion"
+				fillCell("0507", "empty", "");
 
 				// RS-Voting: Inexpensive?
-				fillCell("0507", "full", "");
-
-				// RS-Voting: Most ballots are real?
-				fillCell("0508", "empty", "");
+				fillCell("0508", "full", "");
 
 				// RS-Voting: Low cognitive burden?
-				fillCell("0509", "full", "Decoy voter only has to remove the sticker on her decoy ballot.");
+				fillCell("0509", "half", "Decoy voter only has to remove the sticker on her decoy ballot.");
 
 				// RS-Voting: Has Security proof?
-				fillCell("0510", "empty", "");
+				fillCell("0510", "full", "");
 
 				// ----------------------------------------
 				// 06.AOZZ
 				// ----------------------------------------
 
-				// AOZZ: System tolerates coercion when: no untappable registration?
+				// AOZZ: "Influencer acts before/during registration"
 				fillCell("0601", "full", "");
 
-				// AOZZ: System tolerates coercion when: EA colludes with coercer?
+				// AOZZ: "Influencer colludes with the EA"
 				fillCell("0602", "half", "");
 
-				// AOZZ: System tolerates coercion when: Coercer can corrupt any device?
+				// AOZZ: "Influencer colludes with hardware manufactures"
 				fillCell("0603", "empty", "");
 				
-				// AOZZ: System tolerates coercion when: Coercer can act at any time?
-				fillCell("0604", "full", "");
+				// AOZZ: "Influencer acts at any time"
+				fillCell("0604", "empty", "");
 
-				// AOZZ: System tolerates coercion when: Tolerates Coercer learning every secrets?
-				fillCell("0605", "empty", "");
+				// AOZZ: "Influencer learns all information stored by the voter, including all keys required by the protocol"
+				fillCell("0605", "full", "");
 
-				// AOZZ: Can fully override coercion?
-				fillCell("0606", "full", "");
+				// AOZZ: "Influencer learns every action taken by the vote"
+				fillCell("0606", "empty", "");
+
+				// AOZZ: "voter can fully override coercion"
+				fillCell("0607", "full", "");
 
 				// AOZZ: Inexpensive?
-				fillCell("0607", "empty", "");
-
-				// AOZZ: Most ballots are real?
-				fillCell("0608", "full", "");
+				fillCell("0608", "empty", "");
 
 				// AOZZ: Low cognitive burden?
 				fillCell("0609", "full", "");
@@ -509,32 +519,32 @@
 				// 07.VoteAgain
 				// ----------------------------------------
 
-				// VoteAgain: System tolerates coercion when: no untappable registration?
+				// VoteAgain: "Influencer acts before/during registration"
 				fillCell("0701", "full", "");
 
-				// VoteAgain: System tolerates coercion when: EA colludes with coercer?
+				// VoteAgain: "Influencer colludes with the EA"
 				fillCell("0702", "full", "");
 
-				// VoteAgain: System tolerates coercion when: Coercer can corrupt any device?
+				// VoteAgain: "Influencer colludes with hardware manufactures"
 				fillCell("0703", "full", "");
 
-				// VoteAgain: System tolerates coercion when: Coercer can act at any time?
+				// VoteAgain: "Influencer acts at any time"
 				fillCell("0704", "empty", "");
 
-				// VoteAgain: System tolerates coercion when: Tolerates Coercer learning every secrets?
-				fillCell("0705", "empty", "");
+				// VoteAgain: "Influencer learns all information stored by the voter, including all keys required by the protocol"
+				fillCell("0705", "full", "");
 
-				// VoteAgain: Can fully override coercion?
-				fillCell("0706", "full", "");
+				// VoteAgain: "Influencer learns every action taken by the vote"
+				fillCell("0706", "empty", "");
+
+				// VoteAgain: "voter can fully override coercion"
+				fillCell("0707", "full", '"... one can hide the number of ballots per user by inserting a deterministic number of dummy ballots which depends solely on the number of voters and the number of cast ballots. Thus, it reveals nothing about the number of ballots cast by individual voters, hiding any (re)voting patterns induced by voters or coercers"');
 
 				// VoteAgain: Inexpensive?
-				fillCell("0707", "full", '"This mechanism ensures tallying takes quasilinear time, making VOTEAGAIN the first revoting scheme that can handle elections with millions of voters."');
-
-				// VoteAgain: Most ballots are real?
-				fillCell("0708", "half", '"... one can hide the number of ballots per user by inserting a deterministic number of dummy ballots which depends solely on the number of voters and the number of cast ballots. Thus, it reveals nothing about the number of ballots cast by individual voters, hiding any (re)voting patterns induced by voters or coercers"');
+				fillCell("0708", "full", '"This mechanism ensures tallying takes quasilinear time, making VOTEAGAIN the first revoting scheme that can handle elections with millions of voters."');
 
 				// VoteAgain: Low cognitive burden?
-				fillCell("0709", "empty", "");
+				fillCell("0709", "full", "");
 
 				// VoteAgain: Has Security proof?
 				fillCell("0710", "half", '"We propose a new game-based coercion resistance definition inspired by Bernhard et al.’s ballot privacy definition. The game tracks two bulletin boards, BB0 and BB1, of which only one is accessible to the adversary (depending on the bit b). We ensure that regardless of the bit b, the same number of ballots are added to the bulletin board."');
@@ -543,29 +553,29 @@
 				// 08.VoteXX
 				// ----------------------------------------
 
-				// VoteXX: System tolerates coercion when: no untappable registration?
+				// VoteXX: "Influencer acts before/during registration"
 				fillCell("0801", "full", "Registration through in person ceremony.");
 
-				// VoteXX: System tolerates coercion when: EA colludes with coercer?
+				// VoteXX: "Influencer colludes with the EA"
 				fillCell("0802", "full", "Uses Threshold Crypto-scheme");
 
-				// VoteXX: System tolerates coercion when: Coercer can corrupt any device?
+				// VoteXX: "Influencer colludes with hardware manufactures"
 				fillCell("0803", "full", "Uses smart phones and personal computers");
 
-				// VoteXX: System tolerates coercion when: Coercer can act at any time?
-				fillCell("0804", "half", "Unless the complete coercion.");
+				// VoteXX: "Influencer acts at any time"
+				fillCell("0804", "full", "Unless the complete coercion.");
 
-				// VoteXX: System tolerates coercion when: Tolerates Coercer learning every secrets?
+				// VoteXX: "Influencer learns all information stored by the voter, including all keys required by the protocol"
 				fillCell("0805", "full", "Coercer knowing all secrets has not better chance than coin flip.");
 
-				// VoteXX: Can fully override coercion?
-				fillCell("0806", "full", "Anything done by the coercer can get flipped.");
+				// VoteXX: "Influencer learns every action taken by the vote"
+				fillCell("0806", "empty", "Anything done by the coercer can get flipped.");
+
+				// VoteXX: "voter can fully override coercion"
+				fillCell("0807", "empty", "Ballots are all real.");
 
 				// VoteXX: Inexpensive?
-				fillCell("0807", "full", "Using precomputation, the system performs in linear time.");
-
-				// VoteXX: Most ballots are real?
-				fillCell("0808", "full", "Ballots are all real.");
+				fillCell("0808", "full", "Using precomputation, the system performs in linear time.");
 
 				// VoteXX: Low cognitive burden?
 				fillCell("0809", "full", "Keys are saved on the device.");

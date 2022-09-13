@@ -113,7 +113,9 @@ class OpinionEditLayout(QHBoxLayout):
                                     bib_record = BibRecord.objects(
                                         title__icontains=candidate_title).first()
                                     adj_paper = Paper.objects(bib=bib_record).first()
-                                    self.active_opinion.about_paper_id = adj_paper
+                                    if adj_paper != None:
+                                        self.active_opinion.about_paper_id = adj_paper.id
+                                    
                                     self.active_opinion.save()
                     else:  # Citations
                         self.direction = "about"
