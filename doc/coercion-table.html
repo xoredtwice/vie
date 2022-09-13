@@ -317,18 +317,19 @@
 				// Helios: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0105", "empty", "Helios has not been designed to tolerate coercion at all.");
 
-				// Helios: Low cognitive burden?
-				fillCell("0106", "full", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
 
 				// Helios: Can fully override coercion?
-				fillCell("0107", "empty", "N/A");
+				fillCell("0106", "empty", "N/A");
 
 				// Helios: Inexpensive?
-				fillCell("0108", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
+				fillCell("0107", "full", '"It takes only a few minutes of computation to obtain results for a 500-voter election. The shuffle proof and verification steps require a few hours, and are thus, by far, the most computation-intensive portions of the process."');
 
 				// Helios: Most ballots are real?
-				fillCell("0109", "full", "All ballots are real.");
+				fillCell("0108", "full", "All ballots are real.");
 
+				// Helios: Low cognitive burden?
+				fillCell("0109", "full", '"It generates a random 10-character password automatically for each voter. At any time, the administrator can email voters using the Helios administrative interface. These emails will automatically contain the voter’s password, though the administrator will not see this password at any time."');
+				
 				// Helios: Has UC proof?
 				fillCell("0110", "empty", "Helios does not provide a UC proof.");
 
@@ -352,17 +353,17 @@
 				// JCJ: Tolerates Coercer learning secrets?
 				fillCell("0205", "empty", "");
 
-				// JCJ: Low cognitive burden?
+				// JCJ: Can fully override coercion?
 				fillCell("0206", "full", "");
 
-				// JCJ: Can fully override coercion?
+				// JCJ: Inexpensive?
 				fillCell("0207", "full", "");
 
-				// JCJ: Inexpensive?
-				fillCell("0208", "full", "");
-
 				// JCJ: Most ballots are real?
-				fillCell("0209", "full", "All ballots are real.");
+				fillCell("0208", "full", "All ballots are real.");
+
+				// JCJ: Low cognitive burden?
+				fillCell("0209", "full", "");
 
 				// JCJ: Has UC proof?
 				fillCell("0210", "half", '"Recall that our definition of coercion-freeness revolves around a game played between an adversary A and a voter targeted for coercion."');
@@ -386,17 +387,17 @@
 				// WeBu09: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0305", "empty", "");
 
-				// WeBu09: Low cognitive burden?
-				fillCell("0306", "empty", "");
-
 				// WeBu09: Can fully override coercion?
-				fillCell("0307", "half", "");
+				fillCell("0306", "half", "");
 
 				// WeBu09: Inexpensive?
-				fillCell("0308", "full", "");
+				fillCell("0307", "full", "");
 
 				// WeBu09: Most ballots are real?
-				fillCell("0309", "full", "");
+				fillCell("0308", "full", "");
+
+				// WeBu09: Low cognitive burden?
+				fillCell("0309", "empty", "");
 
 				// WeBu09: Has Security proof?
 				fillCell("0310", "full", "");
@@ -420,18 +421,18 @@
 				// Selections: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0405", "empty", "An adversary that tap the registration can learn all the passwords.");
 
-				// Selections: Low cognitive burden?
-				fillCell("0406", "half", "User needs to generate a panic password and deceive the coercer.");
-
 				// Selections: Can fully override coercion?
-				fillCell("0407", "full", "Only the real votes get counted.");
+				fillCell("0406", "full", "Only the real votes get counted.");
 
 				// Selections: Inexpensive?
-				fillCell("0408", "full", "No special hardware or paper.");
+				fillCell("0407", "full", "No special hardware or paper.");
 
 				// Selections: Most ballots are real? 
 				// this column is to punish decoy. already captured in expensive and by special symbol. (centered dot)
-				fillCell("0409", "full", "");
+				fillCell("0408", "full", "");
+
+				// Selections: Low cognitive burden?
+				fillCell("0409", "half", "User needs to generate a panic password and deceive the coercer.");
 
 				// Selections: Has Security proof?
 				fillCell("0410", "half", "Game-based proof.");
@@ -455,17 +456,17 @@
 				// RS-Voting: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0505", "full", "Decoy Voter has no actual useful secrets.");
 
-				// RS-Voting: Low cognitive burden?
-				fillCell("0506", "full", "Decoy voter only has to remove the sticker on her decoy ballot.");
-
 				// RS-Voting: Can fully override coercion? (ask Jeremy, important)
-				fillCell("0507", "half", "Not in the current implementation but possible.");
+				fillCell("0506", "half", "Not in the current implementation but possible.");
 
 				// RS-Voting: Inexpensive?
-				fillCell("0508", "full", "");
+				fillCell("0507", "full", "");
 
 				// RS-Voting: Most ballots are real?
-				fillCell("0509", "empty", "");
+				fillCell("0508", "empty", "");
+
+				// RS-Voting: Low cognitive burden?
+				fillCell("0509", "full", "Decoy voter only has to remove the sticker on her decoy ballot.");
 
 				// RS-Voting: Has Security proof?
 				fillCell("0510", "empty", "");
@@ -489,16 +490,16 @@
 				// AOZZ: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0605", "empty", "");
 
-				// AOZZ: Low cognitive burden?
+				// AOZZ: Can fully override coercion?
 				fillCell("0606", "full", "");
 
-				// AOZZ: Can fully override coercion?
-				fillCell("0607", "full", "");
-
 				// AOZZ: Inexpensive?
-				fillCell("0608", "empty", "");
+				fillCell("0607", "empty", "");
 
 				// AOZZ: Most ballots are real?
+				fillCell("0608", "full", "");
+
+				// AOZZ: Low cognitive burden?
 				fillCell("0609", "full", "");
 
 				// AOZZ: Has Security proof?
@@ -523,17 +524,17 @@
 				// VoteAgain: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0705", "empty", "");
 
-				// VoteAgain: Low cognitive burden?
-				fillCell("0706", "empty", "");
-
 				// VoteAgain: Can fully override coercion?
-				fillCell("0707", "full", "");
+				fillCell("0706", "full", "");
 
 				// VoteAgain: Inexpensive?
-				fillCell("0708", "full", '"This mechanism ensures tallying takes quasilinear time, making VOTEAGAIN the first revoting scheme that can handle elections with millions of voters."');
+				fillCell("0707", "full", '"This mechanism ensures tallying takes quasilinear time, making VOTEAGAIN the first revoting scheme that can handle elections with millions of voters."');
 
 				// VoteAgain: Most ballots are real?
-				fillCell("0709", "half", '"... one can hide the number of ballots per user by inserting a deterministic number of dummy ballots which depends solely on the number of voters and the number of cast ballots. Thus, it reveals nothing about the number of ballots cast by individual voters, hiding any (re)voting patterns induced by voters or coercers"');
+				fillCell("0708", "half", '"... one can hide the number of ballots per user by inserting a deterministic number of dummy ballots which depends solely on the number of voters and the number of cast ballots. Thus, it reveals nothing about the number of ballots cast by individual voters, hiding any (re)voting patterns induced by voters or coercers"');
+
+				// VoteAgain: Low cognitive burden?
+				fillCell("0709", "empty", "");
 
 				// VoteAgain: Has Security proof?
 				fillCell("0710", "half", '"We propose a new game-based coercion resistance definition inspired by Bernhard et al.’s ballot privacy definition. The game tracks two bulletin boards, BB0 and BB1, of which only one is accessible to the adversary (depending on the bit b). We ensure that regardless of the bit b, the same number of ballots are added to the bulletin board."');
@@ -557,17 +558,17 @@
 				// VoteXX: System tolerates coercion when: Tolerates Coercer learning every secrets?
 				fillCell("0805", "full", "Coercer knowing all secrets has not better chance than coin flip.");
 
-				// VoteXX: Low cognitive burden?
-				fillCell("0806", "full", "Keys are saved on the device.");
-
 				// VoteXX: Can fully override coercion?
-				fillCell("0807", "full", "Anything done by the coercer can get flipped.");
+				fillCell("0806", "full", "Anything done by the coercer can get flipped.");
 
 				// VoteXX: Inexpensive?
-				fillCell("0808", "full", "Using precomputation, the system performs in linear time.");
+				fillCell("0807", "full", "Using precomputation, the system performs in linear time.");
 
 				// VoteXX: Most ballots are real?
-				fillCell("0809", "full", "Ballots are all real.");
+				fillCell("0808", "full", "Ballots are all real.");
+
+				// VoteXX: Low cognitive burden?
+				fillCell("0809", "full", "Keys are saved on the device.");
 
 				// VoteXX: Has Security proof?
 				fillCell("0810", "full", "");
