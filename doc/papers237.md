@@ -3,7 +3,7 @@ Coercion Resistance Literature Topic Modelling
 
 **LDA (Latent Dirichlet Allocation) Topic modelling**
 
-We have generated a LDA model, using four topics and 10 words per topic.
+We have generated a LDA model, using 5 topics and 10 words per topic.
 
 [Interactive visualization](https://ethia.sh/lda.html)
 
